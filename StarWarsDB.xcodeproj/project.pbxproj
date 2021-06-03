@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		7A1A631F26694F8500199FDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A631E26694F8500199FDD /* AppDelegate.swift */; };
 		7A1A632126694F8500199FDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A632026694F8500199FDD /* SceneDelegate.swift */; };
-		7A1A632326694F8500199FDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A632226694F8500199FDD /* ViewController.swift */; };
-		7A1A632626694F8500199FDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A632426694F8500199FDD /* Main.storyboard */; };
+		7A1A632326694F8500199FDD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A632226694F8500199FDD /* MainViewController.swift */; };
 		7A1A632926694F8500199FDD /* StarWarsDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A632726694F8500199FDD /* StarWarsDB.xcdatamodeld */; };
 		7A1A632B26694F8600199FDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A632A26694F8600199FDD /* Assets.xcassets */; };
 		7A1A632E26694F8600199FDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A632C26694F8600199FDD /* LaunchScreen.storyboard */; };
@@ -20,8 +19,7 @@
 		7A1A631B26694F8500199FDD /* StarWarsDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A1A631E26694F8500199FDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A1A632026694F8500199FDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7A1A632226694F8500199FDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7A1A632526694F8500199FDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7A1A632226694F8500199FDD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7A1A632826694F8500199FDD /* StarWarsDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StarWarsDB.xcdatamodel; sourceTree = "<group>"; };
 		7A1A632A26694F8600199FDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A1A632D26694F8600199FDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,16 +56,71 @@
 		7A1A631D26694F8500199FDD /* StarWarsDB */ = {
 			isa = PBXGroup;
 			children = (
-				7A1A631E26694F8500199FDD /* AppDelegate.swift */,
-				7A1A632026694F8500199FDD /* SceneDelegate.swift */,
-				7A1A632226694F8500199FDD /* ViewController.swift */,
-				7A1A632426694F8500199FDD /* Main.storyboard */,
-				7A1A632A26694F8600199FDD /* Assets.xcassets */,
-				7A1A632C26694F8600199FDD /* LaunchScreen.storyboard */,
-				7A1A632F26694F8600199FDD /* Info.plist */,
-				7A1A632726694F8500199FDD /* StarWarsDB.xcdatamodeld */,
+				7A1A633526694FE700199FDD /* App */,
+				7A1A633826694FFC00199FDD /* Core */,
+				7A1A633726694FF400199FDD /* Environments */,
+				7A1A633626694FEC00199FDD /* Resources */,
 			);
 			path = StarWarsDB;
+			sourceTree = "<group>";
+		};
+		7A1A633526694FE700199FDD /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A631E26694F8500199FDD /* AppDelegate.swift */,
+				7A1A632026694F8500199FDD /* SceneDelegate.swift */,
+				7A1A63392669504100199FDD /* Flow */,
+				7A1A633A2669504800199FDD /* Entities */,
+				7A1A633B266950A700199FDD /* DataBase */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		7A1A633626694FEC00199FDD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A632C26694F8600199FDD /* LaunchScreen.storyboard */,
+				7A1A632A26694F8600199FDD /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7A1A633726694FF400199FDD /* Environments */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A632F26694F8600199FDD /* Info.plist */,
+			);
+			path = Environments;
+			sourceTree = "<group>";
+		};
+		7A1A633826694FFC00199FDD /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		7A1A63392669504100199FDD /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A632226694F8500199FDD /* MainViewController.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		7A1A633A2669504800199FDD /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		7A1A633B266950A700199FDD /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A632726694F8500199FDD /* StarWarsDB.xcdatamodeld */,
+			);
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +130,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A1A633226694F8600199FDD /* Build configuration list for PBXNativeTarget "StarWarsDB" */;
 			buildPhases = (
+				7A1A633C2669518000199FDD /* Swift Lint */,
 				7A1A631726694F8500199FDD /* Sources */,
 				7A1A631826694F8500199FDD /* Frameworks */,
 				7A1A631926694F8500199FDD /* Resources */,
@@ -129,11 +183,31 @@
 			files = (
 				7A1A632E26694F8600199FDD /* LaunchScreen.storyboard in Resources */,
 				7A1A632B26694F8600199FDD /* Assets.xcassets in Resources */,
-				7A1A632626694F8500199FDD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7A1A633C2669518000199FDD /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7A1A631726694F8500199FDD /* Sources */ = {
@@ -141,7 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A1A632926694F8500199FDD /* StarWarsDB.xcdatamodeld in Sources */,
-				7A1A632326694F8500199FDD /* ViewController.swift in Sources */,
+				7A1A632326694F8500199FDD /* MainViewController.swift in Sources */,
 				7A1A631F26694F8500199FDD /* AppDelegate.swift in Sources */,
 				7A1A632126694F8500199FDD /* SceneDelegate.swift in Sources */,
 			);
@@ -150,14 +224,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7A1A632426694F8500199FDD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7A1A632526694F8500199FDD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7A1A632C26694F8600199FDD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +358,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LA6FA5G5XC;
-				INFOPLIST_FILE = StarWarsDB/Info.plist;
+				INFOPLIST_FILE = StarWarsDB/Environments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,7 +377,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LA6FA5G5XC;
-				INFOPLIST_FILE = StarWarsDB/Info.plist;
+				INFOPLIST_FILE = StarWarsDB/Environments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
