@@ -1,4 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AbstarctVehicle" representedClassName="AbstarctVehicle" isAbstract="YES" syncable="YES">
+        <attribute name="cargoCapacity" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="consumables" attributeType="String"/>
+        <attribute name="costInCredits" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="crew" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="edited" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="filmIds" attributeType="Transformable" valueTransformerName="[Int]"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="length" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="manufacturer" attributeType="String"/>
+        <attribute name="maxAtmospheringSpeed" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="model" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="passengers" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pilotIds" attributeType="Transformable" valueTransformerName="[Int]"/>
+    </entity>
+    <entity name="People" representedClassName="People" syncable="YES">
+        <attribute name="birthday" attributeType="String"/>
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="edited" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="eyeColor" attributeType="String"/>
+        <attribute name="filmIds" attributeType="Transformable" valueTransformerName="[Int]"/>
+        <attribute name="gender" attributeType="String"/>
+        <attribute name="hairColor" attributeType="String"/>
+        <attribute name="height" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="homeworldId" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="mass" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="skinColor" attributeType="String"/>
+        <attribute name="speciesIds" attributeType="Transformable" valueTransformerName="[Int]"/>
+        <attribute name="starshipIds" attributeType="Transformable" valueTransformerName="[Int]"/>
+        <attribute name="vehicleIds" attributeType="Transformable" valueTransformerName="[Int]"/>
+        <relationship name="starships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Starship" inverseName="pilots" inverseEntity="Starship"/>
+        <relationship name="vehicles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="pilots" inverseEntity="Vehicle"/>
+    </entity>
+    <entity name="Starship" representedClassName="Starship" parentEntity="AbstarctVehicle" syncable="YES">
+        <attribute name="hyperdriveRating" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="mglt" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="starshipClass" attributeType="String"/>
+        <relationship name="pilots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="People" inverseName="starships" inverseEntity="People"/>
+    </entity>
+    <entity name="Vehicle" representedClassName="Vehicle" parentEntity="AbstarctVehicle" syncable="YES">
+        <attribute name="vehicleClass" attributeType="String"/>
+        <relationship name="pilots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="People" inverseName="vehicles" inverseEntity="People"/>
+    </entity>
+    <elements>
+        <element name="AbstarctVehicle" positionX="-56.507080078125" positionY="-124.1110382080078" width="128" height="268"/>
+        <element name="People" positionX="-53.74072265625" positionY="183.4278869628906" width="126.4755859375" height="313"/>
+        <element name="Starship" positionX="187.9505615234375" positionY="128.2973327636719" width="128" height="103"/>
+        <element name="Vehicle" positionX="-277.2589721679688" positionY="144.7032470703125" width="128" height="73"/>
+    </elements>
 </model>
