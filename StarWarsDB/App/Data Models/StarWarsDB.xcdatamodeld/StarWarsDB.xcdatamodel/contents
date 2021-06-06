@@ -34,8 +34,46 @@
         <attribute name="speciesIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
         <attribute name="starshipIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
         <attribute name="vehicleIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <relationship name="homeworld" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Planet" inverseName="residents" inverseEntity="Planet"/>
+        <relationship name="species" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Species" inverseName="peoples" inverseEntity="Species"/>
         <relationship name="starships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Starship" inverseName="pilots" inverseEntity="Starship"/>
         <relationship name="vehicles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="pilots" inverseEntity="Vehicle"/>
+    </entity>
+    <entity name="Planet" representedClassName="Planet" syncable="YES">
+        <attribute name="climate" attributeType="String"/>
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="diameter" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="edited" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="filmIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="gravity" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="orbitalPeriod" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="popultaion" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="residentIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="rotationPeriod" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="surfaceWater" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="terrain" attributeType="String"/>
+        <relationship name="residents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="People" inverseName="homeworld" inverseEntity="People"/>
+    </entity>
+    <entity name="Species" representedClassName="Species" syncable="YES">
+        <attribute name="averageHeight" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="averageLifespan" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="classification" attributeType="String"/>
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="designation" attributeType="String"/>
+        <attribute name="edited" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="eyeColors" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="filmIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="heirColors" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="homeworldId" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="language" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="peopleIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="skinColors" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <relationship name="homeworld" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Planet"/>
+        <relationship name="peoples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="People" inverseName="species" inverseEntity="People"/>
     </entity>
     <entity name="Starship" representedClassName="Starship" parentEntity="AbstarctVehicle" syncable="YES">
         <attribute name="hyperdriveRating" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -48,9 +86,11 @@
         <relationship name="pilots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="People" inverseName="vehicles" inverseEntity="People"/>
     </entity>
     <elements>
-        <element name="AbstarctVehicle" positionX="-56.507080078125" positionY="-124.1110382080078" width="128" height="268"/>
-        <element name="People" positionX="-53.74072265625" positionY="183.4278869628906" width="126.4755859375" height="313"/>
-        <element name="Starship" positionX="187.9505615234375" positionY="128.2973327636719" width="128" height="103"/>
-        <element name="Vehicle" positionX="-277.2589721679688" positionY="144.7032470703125" width="128" height="73"/>
+        <element name="AbstarctVehicle" positionX="102.1798095703125" positionY="168.8202209472656" width="128" height="268"/>
+        <element name="People" positionX="-68.851806640625" positionY="163.4516906738281" width="126.4755859375" height="343"/>
+        <element name="Planet" positionX="-230.2108764648438" positionY="-76.38819885253906" width="128" height="268"/>
+        <element name="Species" positionX="-295.5528564453125" positionY="248.9886779785156" width="128" height="298"/>
+        <element name="Starship" positionX="101.1966552734375" positionY="34.9040222167969" width="128" height="103"/>
+        <element name="Vehicle" positionX="104.6315917968749" positionY="464.4473571777344" width="128" height="73"/>
     </elements>
 </model>

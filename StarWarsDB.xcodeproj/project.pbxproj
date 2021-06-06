@@ -29,6 +29,10 @@
 		7A1A632926694F8500199FDD /* StarWarsDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A632726694F8500199FDD /* StarWarsDB.xcdatamodeld */; };
 		7A1A632B26694F8600199FDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A632A26694F8600199FDD /* Assets.xcassets */; };
 		7A1A632E26694F8600199FDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A632C26694F8600199FDD /* LaunchScreen.storyboard */; };
+		7AF1A245266D5EE400F95A1B /* Planet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1A241266D5EE400F95A1B /* Planet+CoreDataClass.swift */; };
+		7AF1A246266D5EE400F95A1B /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1A242266D5EE400F95A1B /* Planet+CoreDataProperties.swift */; };
+		7AF1A247266D5EE400F95A1B /* Species+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1A243266D5EE400F95A1B /* Species+CoreDataClass.swift */; };
+		7AF1A248266D5EE400F95A1B /* Species+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1A244266D5EE400F95A1B /* Species+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,10 @@
 		7A1A632A26694F8600199FDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A1A632D26694F8600199FDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A1A632F26694F8600199FDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AF1A241266D5EE400F95A1B /* Planet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planet+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7AF1A242266D5EE400F95A1B /* Planet+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planet+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7AF1A243266D5EE400F95A1B /* Species+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Species+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7AF1A244266D5EE400F95A1B /* Species+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Species+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +124,7 @@
 				7A1A632026694F8500199FDD /* SceneDelegate.swift */,
 				7A1A63392669504100199FDD /* Flow */,
 				7A1A633A2669504800199FDD /* Entities */,
-				7A1A633B266950A700199FDD /* DataBase */,
+				7A1A633B266950A700199FDD /* Data Models */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -158,6 +166,10 @@
 		7A1A633A2669504800199FDD /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				7AF1A241266D5EE400F95A1B /* Planet+CoreDataClass.swift */,
+				7AF1A242266D5EE400F95A1B /* Planet+CoreDataProperties.swift */,
+				7AF1A243266D5EE400F95A1B /* Species+CoreDataClass.swift */,
+				7AF1A244266D5EE400F95A1B /* Species+CoreDataProperties.swift */,
 				7A19FEDE266A60C9000554F2 /* People+CoreDataClass.swift */,
 				7A19FEDF266A60C9000554F2 /* People+CoreDataProperties.swift */,
 				7A19FECC266A5FBC000554F2 /* Vehicle+CoreDataClass.swift */,
@@ -170,12 +182,12 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		7A1A633B266950A700199FDD /* DataBase */ = {
+		7A1A633B266950A700199FDD /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
 				7A1A632726694F8500199FDD /* StarWarsDB.xcdatamodeld */,
 			);
-			path = DataBase;
+			path = "Data Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,13 +287,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AF1A246266D5EE400F95A1B /* Planet+CoreDataProperties.swift in Sources */,
 				7A19FEEC266AC277000554F2 /* IntExtensions.swift in Sources */,
+				7AF1A245266D5EE400F95A1B /* Planet+CoreDataClass.swift in Sources */,
 				7A1A632926694F8500199FDD /* StarWarsDB.xcdatamodeld in Sources */,
+				7AF1A247266D5EE400F95A1B /* Species+CoreDataClass.swift in Sources */,
 				7A19FED4266A5FBC000554F2 /* Vehicle+CoreDataClass.swift in Sources */,
 				7A19FED8266A5FBC000554F2 /* AbstarctVehicle+CoreDataClass.swift in Sources */,
 				7A1A632326694F8500199FDD /* MainViewController.swift in Sources */,
 				7A19FEEE266AC277000554F2 /* DateFormatters.swift in Sources */,
 				7A19FED9266A5FBC000554F2 /* AbstarctVehicle+CoreDataProperties.swift in Sources */,
+				7AF1A248266D5EE400F95A1B /* Species+CoreDataProperties.swift in Sources */,
 				7A19FEDC266A6080000554F2 /* Starship+CoreDataClass.swift in Sources */,
 				7A19FEDD266A6080000554F2 /* Starship+CoreDataProperties.swift in Sources */,
 				7A19FED5266A5FBC000554F2 /* Vehicle+CoreDataProperties.swift in Sources */,
