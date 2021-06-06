@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,14 @@
 		7A19FEDD266A6080000554F2 /* Starship+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A19FEDB266A6080000554F2 /* Starship+CoreDataProperties.swift */; };
 		7A19FEE0266A60C9000554F2 /* People+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A19FEDE266A60C9000554F2 /* People+CoreDataClass.swift */; };
 		7A19FEE1266A60C9000554F2 /* People+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A19FEDF266A60C9000554F2 /* People+CoreDataProperties.swift */; };
+		7A19FEEA266AC277000554F2 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A19FEE3266AC277000554F2 /* StringExtensions.swift */; };
+		7A19FEEB266AC277000554F2 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A19FEE4266AC277000554F2 /* DispatchQueue+Extensions.swift */; };
+		7A19FEEC266AC277000554F2 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A19FEE5266AC277000554F2 /* IntExtensions.swift */; };
+		7A19FEED266AC277000554F2 /* SWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A19FEE6266AC277000554F2 /* SWAPI.swift */; };
+		7A19FEEE266AC277000554F2 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A19FEE7266AC277000554F2 /* DateFormatters.swift */; };
+		7A19FEEF266AC277000554F2 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A19FEE8266AC277000554F2 /* Errors.swift */; };
+		7A19FEF2266AC2B2000554F2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A19FEF1266AC2B2000554F2 /* CoreDataStack.swift */; };
+		7A19FEF5266CB647000554F2 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 7A19FEF4266CB647000554F2 /* SwiftyJSON */; };
 		7A1A631F26694F8500199FDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A631E26694F8500199FDD /* AppDelegate.swift */; };
 		7A1A632126694F8500199FDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A632026694F8500199FDD /* SceneDelegate.swift */; };
 		7A1A632326694F8500199FDD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A632226694F8500199FDD /* MainViewController.swift */; };
@@ -32,6 +40,13 @@
 		7A19FEDB266A6080000554F2 /* Starship+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Starship+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7A19FEDE266A60C9000554F2 /* People+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "People+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7A19FEDF266A60C9000554F2 /* People+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "People+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7A19FEE3266AC277000554F2 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		7A19FEE4266AC277000554F2 /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
+		7A19FEE5266AC277000554F2 /* IntExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
+		7A19FEE6266AC277000554F2 /* SWAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWAPI.swift; sourceTree = "<group>"; };
+		7A19FEE7266AC277000554F2 /* DateFormatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
+		7A19FEE8266AC277000554F2 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		7A19FEF1266AC2B2000554F2 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		7A1A631B26694F8500199FDD /* StarWarsDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A1A631E26694F8500199FDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A1A632026694F8500199FDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,12 +62,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A19FEF5266CB647000554F2 /* SwiftyJSON in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A19FEE2266AC25A000554F2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7A19FEE7266AC277000554F2 /* DateFormatters.swift */,
+				7A19FEE4266AC277000554F2 /* DispatchQueue+Extensions.swift */,
+				7A19FEE8266AC277000554F2 /* Errors.swift */,
+				7A19FEE5266AC277000554F2 /* IntExtensions.swift */,
+				7A19FEE3266AC277000554F2 /* StringExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7A1A631226694F8500199FDD = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +102,7 @@
 			children = (
 				7A1A633526694FE700199FDD /* App */,
 				7A1A633826694FFC00199FDD /* Core */,
+				7A19FEE2266AC25A000554F2 /* Extensions */,
 				7A1A633726694FF400199FDD /* Environments */,
 				7A1A633626694FEC00199FDD /* Resources */,
 			);
@@ -112,6 +141,8 @@
 		7A1A633826694FFC00199FDD /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				7A19FEF1266AC2B2000554F2 /* CoreDataStack.swift */,
+				7A19FEE6266AC277000554F2 /* SWAPI.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -164,6 +195,9 @@
 			dependencies = (
 			);
 			name = StarWarsDB;
+			packageProductDependencies = (
+				7A19FEF4266CB647000554F2 /* SwiftyJSON */,
+			);
 			productName = StarWarsDB;
 			productReference = 7A1A631B26694F8500199FDD /* StarWarsDB.app */;
 			productType = "com.apple.product-type.application";
@@ -191,6 +225,9 @@
 				Base,
 			);
 			mainGroup = 7A1A631226694F8500199FDD;
+			packageReferences = (
+				7A19FEF3266CB647000554F2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 7A1A631C26694F8500199FDD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -238,17 +275,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A19FEEC266AC277000554F2 /* IntExtensions.swift in Sources */,
 				7A1A632926694F8500199FDD /* StarWarsDB.xcdatamodeld in Sources */,
 				7A19FED4266A5FBC000554F2 /* Vehicle+CoreDataClass.swift in Sources */,
 				7A19FED8266A5FBC000554F2 /* AbstarctVehicle+CoreDataClass.swift in Sources */,
 				7A1A632326694F8500199FDD /* MainViewController.swift in Sources */,
+				7A19FEEE266AC277000554F2 /* DateFormatters.swift in Sources */,
 				7A19FED9266A5FBC000554F2 /* AbstarctVehicle+CoreDataProperties.swift in Sources */,
 				7A19FEDC266A6080000554F2 /* Starship+CoreDataClass.swift in Sources */,
 				7A19FEDD266A6080000554F2 /* Starship+CoreDataProperties.swift in Sources */,
 				7A19FED5266A5FBC000554F2 /* Vehicle+CoreDataProperties.swift in Sources */,
 				7A19FEE0266A60C9000554F2 /* People+CoreDataClass.swift in Sources */,
+				7A19FEED266AC277000554F2 /* SWAPI.swift in Sources */,
+				7A19FEEB266AC277000554F2 /* DispatchQueue+Extensions.swift in Sources */,
 				7A1A631F26694F8500199FDD /* AppDelegate.swift in Sources */,
+				7A19FEF2266AC2B2000554F2 /* CoreDataStack.swift in Sources */,
 				7A19FEE1266A60C9000554F2 /* People+CoreDataProperties.swift in Sources */,
+				7A19FEEA266AC277000554F2 /* StringExtensions.swift in Sources */,
+				7A19FEEF266AC277000554F2 /* Errors.swift in Sources */,
 				7A1A632126694F8500199FDD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,6 +487,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7A19FEF3266CB647000554F2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7A19FEF4266CB647000554F2 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A19FEF3266CB647000554F2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		7A1A632726694F8500199FDD /* StarWarsDB.xcdatamodeld */ = {

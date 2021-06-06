@@ -2,7 +2,7 @@
 //  Vehicle+CoreDataProperties.swift
 //  StarWarsDB
 //
-//  Created by Aksilont on 04.06.2021.
+//  Created by Aksilont on 06.06.2021.
 //
 //
 

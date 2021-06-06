@@ -2,7 +2,7 @@
 //  People+CoreDataProperties.swift
 //  StarWarsDB
 //
-//  Created by Aksilont on 04.06.2021.
+//  Created by Aksilont on 06.06.2021.
 //
 //
 
@@ -15,22 +15,22 @@ extension People {
         return NSFetchRequest<People>(entityName: "People")
     }
 
-    @NSManaged public var birthday: String?
+    @NSManaged public var birthYear: String?
     @NSManaged public var created: Date?
     @NSManaged public var edited: Date?
     @NSManaged public var eyeColor: String?
-    @NSManaged public var filmIds: NSObject?
+    @NSManaged public var filmIds: [Int]?
     @NSManaged public var gender: String?
     @NSManaged public var hairColor: String?
     @NSManaged public var height: Int16
     @NSManaged public var homeworldId: Int16
-    @NSManaged public var id: String?
+    @NSManaged public var id: Int16
     @NSManaged public var mass: Int16
     @NSManaged public var name: String?
     @NSManaged public var skinColor: String?
-    @NSManaged public var speciesIds: NSObject?
-    @NSManaged public var starshipIds: NSObject?
-    @NSManaged public var vehicleIds: NSObject?
+    @NSManaged public var speciesIds: [Int]?
+    @NSManaged public var starshipIds: [Int]?
+    @NSManaged public var vehicleIds: [Int]?
     @NSManaged public var vehicles: NSSet?
     @NSManaged public var starships: NSSet?
 

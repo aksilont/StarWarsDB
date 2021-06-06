@@ -7,7 +7,7 @@
         <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="crew" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="edited" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="filmIds" attributeType="Transformable" valueTransformerName="[Int]"/>
+        <attribute name="filmIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
         <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="length" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="manufacturer" attributeType="String"/>
@@ -15,25 +15,25 @@
         <attribute name="model" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="passengers" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="pilotIds" attributeType="Transformable" valueTransformerName="[Int]"/>
+        <attribute name="pilotIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
     </entity>
     <entity name="People" representedClassName="People" syncable="YES">
-        <attribute name="birthday" attributeType="String"/>
+        <attribute name="birthYear" attributeType="String"/>
         <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="edited" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="eyeColor" attributeType="String"/>
-        <attribute name="filmIds" attributeType="Transformable" valueTransformerName="[Int]"/>
+        <attribute name="filmIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
         <attribute name="gender" attributeType="String"/>
         <attribute name="hairColor" attributeType="String"/>
         <attribute name="height" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="homeworldId" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="id" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="mass" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="skinColor" attributeType="String"/>
-        <attribute name="speciesIds" attributeType="Transformable" valueTransformerName="[Int]"/>
-        <attribute name="starshipIds" attributeType="Transformable" valueTransformerName="[Int]"/>
-        <attribute name="vehicleIds" attributeType="Transformable" valueTransformerName="[Int]"/>
+        <attribute name="speciesIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="starshipIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="vehicleIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
         <relationship name="starships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Starship" inverseName="pilots" inverseEntity="Starship"/>
         <relationship name="vehicles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="pilots" inverseEntity="Vehicle"/>
     </entity>
