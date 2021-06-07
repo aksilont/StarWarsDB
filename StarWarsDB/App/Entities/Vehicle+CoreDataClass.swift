@@ -27,7 +27,7 @@ public class Vehicle: AbstarctVehicle {
         object.consumables = json["consumables"].string
         object.costInCredits = Int64(json["cost_in_credits"].string ?? "-1") ?? -1
         object.crew = Int64(json["crew"].string ?? "-1") ?? -1
-        object.length = json["length"].float ?? -1.0
+        object.length = Float(json["length"].string ?? "-1") ?? -1.0
         object.manufacturer = json["manufacturer"].string
         object.maxAtmospheringSpeed = Int64(json["max_atmosphering_speed"].string ?? "-1") ?? -1
         object.model = json["model"].string

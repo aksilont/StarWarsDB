@@ -34,10 +34,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 data.forEach { _ = Planet.make(from: $0, in: context) }
             }
         }
-        
+
         SWAPI.shared.getAll(.vehicles) { data in
             self.perform(in: context) {
                 data.forEach { _ = Vehicle.make(from: $0, in: context) }
+            }
+        }
+        
+        SWAPI.shared.getAll(.starships) { data in
+            self.perform(in: context) {
+                data.forEach { _ = Starship.make(from: $0, in: context) }
             }
         }
     }
