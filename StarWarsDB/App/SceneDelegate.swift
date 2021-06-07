@@ -28,6 +28,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 data.forEach { _ = People.make(from: $0, in: context) }
             }
         }
+        
+        SWAPI.shared.getAll(ModelType.planets) { data in
+            self.perform(in: context) {
+                data.forEach { _ = Planet.make(from: $0, in: context) }
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
