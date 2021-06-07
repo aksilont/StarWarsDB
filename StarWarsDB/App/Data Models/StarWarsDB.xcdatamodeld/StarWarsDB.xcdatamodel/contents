@@ -57,7 +57,7 @@
         <relationship name="residents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="People" inverseName="homeworld" inverseEntity="People"/>
     </entity>
     <entity name="Species" representedClassName="Species" syncable="YES">
-        <attribute name="averageHeight" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="averageHeight" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="averageLifespan" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="classification" attributeType="String"/>
         <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
@@ -89,7 +89,7 @@
         <element name="AbstarctVehicle" positionX="102.1798095703125" positionY="168.8202209472656" width="128" height="268"/>
         <element name="People" positionX="-68.851806640625" positionY="163.4516906738281" width="126.4755859375" height="343"/>
         <element name="Planet" positionX="-230.2108764648438" positionY="-76.38819885253906" width="128" height="268"/>
-        <element name="Species" positionX="-295.5528564453125" positionY="248.9886779785156" width="128" height="298"/>
+        <element name="Species" positionX="-295.5528564453125" positionY="248.9886779785156" width="128" height="284"/>
         <element name="Starship" positionX="101.1966552734375" positionY="34.9040222167969" width="128" height="103"/>
         <element name="Vehicle" positionX="104.6315917968749" positionY="464.4473571777344" width="128" height="73"/>
     </elements>

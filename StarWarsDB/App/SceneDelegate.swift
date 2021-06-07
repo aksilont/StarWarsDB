@@ -46,6 +46,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 data.forEach { _ = Starship.make(from: $0, in: context) }
             }
         }
+        
+        SWAPI.shared.getAll(.species) { data in
+            self.perform(in: context) {
+                data.forEach { _ = Species.make(from: $0, in: context) }
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

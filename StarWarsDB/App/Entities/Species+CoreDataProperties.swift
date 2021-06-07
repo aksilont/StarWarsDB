@@ -15,7 +15,7 @@ extension Species {
         return NSFetchRequest<Species>(entityName: "Species")
     }
 
-    @NSManaged public var averageHeight: Int16
+    @NSManaged public var averageHeight: Float
     @NSManaged public var averageLifespan: Int16
     @NSManaged public var classification: String?
     @NSManaged public var created: Date?
