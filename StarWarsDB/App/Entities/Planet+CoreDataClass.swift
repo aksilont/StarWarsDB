@@ -13,9 +13,9 @@ import SwiftyJSON
 @objc(Planet)
 public class Planet: NSManagedObject {
 
-    static func make(from json: JSON, in context: NSManagedObjectContext) -> Planet? {
+    static func makeOrUpdate(from json: JSON, in context: NSManagedObjectContext) -> Planet? {
         guard let objectId = json["url"].url?.lastPathComponent.asInt16 else { return nil }
-        let object = Planet(context: context)
+        let object = getUniqueInstance(from: objectId, in: context)
         
         object.created = Date.fromISO8601(json["created"].stringValue) as Date?
         object.edited = Date.fromISO8601(json["edited"].stringValue) as Date?
@@ -33,7 +33,7 @@ public class Planet: NSManagedObject {
         object.terrain = json["terrain"].string
         object.residentIds = json["residents"].array?.compactMap { $0.url?.lastPathComponent.asInt }
         
-        debugPrint("Object created: \(type(of: self)) \(objectId)")
+        debugPrint("Object overwritten: \(type(of: self)) \(objectId)")
         
         return object
     }

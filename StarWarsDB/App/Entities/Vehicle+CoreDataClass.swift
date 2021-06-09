@@ -13,9 +13,9 @@ import SwiftyJSON
 @objc(Vehicle)
 public class Vehicle: AbstarctVehicle {
 
-    static func make(from json: JSON, in context: NSManagedObjectContext) -> Vehicle? {
+    static func makeOrUpdate(from json: JSON, in context: NSManagedObjectContext) -> Vehicle? {
         guard let objectId = json["url"].url?.lastPathComponent.asInt16 else { return nil }
-        let object = Vehicle(context: context)
+        let object = getUniqueInstance(from: objectId, in: context)
         
         object.created = Date.fromISO8601(json["created"].stringValue) as Date?
         object.edited = Date.fromISO8601(json["edited"].stringValue) as Date?
@@ -35,7 +35,7 @@ public class Vehicle: AbstarctVehicle {
         object.pilotIds = json["pilots"].array?.compactMap { $0.url?.lastPathComponent.asInt }
         object.vehicleClass = json["vehicle_class"].string
         
-        debugPrint("Object created: \(type(of: self)) \(objectId)")
+        debugPrint("Object overwritten: \(type(of: self)) \(objectId)")
         
         return object
     }

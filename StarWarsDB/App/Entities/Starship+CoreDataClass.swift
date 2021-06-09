@@ -13,9 +13,9 @@ import SwiftyJSON
 @objc(Starship)
 public class Starship: AbstarctVehicle {
 
-    static func make(from json: JSON, in context: NSManagedObjectContext) -> Starship? {
+    static func makeOrUpdate(from json: JSON, in context: NSManagedObjectContext) -> Starship? {
         guard let objectId = json["url"].url?.lastPathComponent.asInt16 else { return nil }
-        let object = Starship(context: context)
+        let object = getUniqueInstance(from: objectId, in: context)
         
         object.created = Date.fromISO8601(json["created"].stringValue) as Date?
         object.edited = Date.fromISO8601(json["edited"].stringValue) as Date?
@@ -37,7 +37,7 @@ public class Starship: AbstarctVehicle {
         object.mglt = json["MGLT"].string?.asInt16 ?? -1
         object.hyperdriveRating = Float(json["hyperdrive_rating"].string ?? "-1") ?? -1.0
 
-        debugPrint("Object created: \(type(of: self)) \(objectId)")
+        debugPrint("Object overwritten: \(type(of: self)) \(objectId)")
         
         return object
     }

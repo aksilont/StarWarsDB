@@ -25,31 +25,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         SWAPI.shared.getAll(.people) { data in
             self.perform(in: context) {
-                data.forEach { _ = People.make(from: $0, in: context) }
+                data.forEach { _ = People.makeOrUpdate(from: $0, in: context) }
             }
         }
 
         SWAPI.shared.getAll(.planets) { data in
             self.perform(in: context) {
-                data.forEach { _ = Planet.make(from: $0, in: context) }
+                data.forEach { _ = Planet.makeOrUpdate(from: $0, in: context) }
             }
         }
 
         SWAPI.shared.getAll(.vehicles) { data in
             self.perform(in: context) {
-                data.forEach { _ = Vehicle.make(from: $0, in: context) }
+                data.forEach { _ = Vehicle.makeOrUpdate(from: $0, in: context) }
             }
         }
-        
+
         SWAPI.shared.getAll(.starships) { data in
             self.perform(in: context) {
-                data.forEach { _ = Starship.make(from: $0, in: context) }
+                data.forEach { _ = Starship.makeOrUpdate(from: $0, in: context) }
             }
         }
-        
+
         SWAPI.shared.getAll(.species) { data in
             self.perform(in: context) {
-                data.forEach { _ = Species.make(from: $0, in: context) }
+                data.forEach { _ = Species.makeOrUpdate(from: $0, in: context) }
             }
         }
     }

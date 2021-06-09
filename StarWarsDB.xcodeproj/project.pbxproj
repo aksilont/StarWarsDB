@@ -29,6 +29,7 @@
 		7A1A632926694F8500199FDD /* StarWarsDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A632726694F8500199FDD /* StarWarsDB.xcdatamodeld */; };
 		7A1A632B26694F8600199FDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A632A26694F8600199FDD /* Assets.xcassets */; };
 		7A1A632E26694F8600199FDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A632C26694F8600199FDD /* LaunchScreen.storyboard */; };
+		7AC822202671114A00160C3B /* NSManagedObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8221F2671114A00160C3B /* NSManagedObject+Extensions.swift */; };
 		7AF1A245266D5EE400F95A1B /* Planet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1A241266D5EE400F95A1B /* Planet+CoreDataClass.swift */; };
 		7AF1A246266D5EE400F95A1B /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1A242266D5EE400F95A1B /* Planet+CoreDataProperties.swift */; };
 		7AF1A247266D5EE400F95A1B /* Species+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1A243266D5EE400F95A1B /* Species+CoreDataClass.swift */; };
@@ -59,6 +60,7 @@
 		7A1A632A26694F8600199FDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A1A632D26694F8600199FDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A1A632F26694F8600199FDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AC8221F2671114A00160C3B /* NSManagedObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Extensions.swift"; sourceTree = "<group>"; };
 		7AF1A241266D5EE400F95A1B /* Planet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planet+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7AF1A242266D5EE400F95A1B /* Planet+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7AF1A243266D5EE400F95A1B /* Species+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Species+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		7A19FEE2266AC25A000554F2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7AC8221F2671114A00160C3B /* NSManagedObject+Extensions.swift */,
 				7A19FEE7266AC277000554F2 /* DateFormatters.swift */,
 				7A19FEE4266AC277000554F2 /* DispatchQueue+Extensions.swift */,
 				7A19FEE8266AC277000554F2 /* Errors.swift */,
@@ -304,6 +307,7 @@
 				7A19FEE0266A60C9000554F2 /* People+CoreDataClass.swift in Sources */,
 				7A19FEED266AC277000554F2 /* SWAPI.swift in Sources */,
 				7A19FEEB266AC277000554F2 /* DispatchQueue+Extensions.swift in Sources */,
+				7AC822202671114A00160C3B /* NSManagedObject+Extensions.swift in Sources */,
 				7A1A631F26694F8500199FDD /* AppDelegate.swift in Sources */,
 				7A19FEF2266AC2B2000554F2 /* CoreDataStack.swift in Sources */,
 				7A19FEE1266A60C9000554F2 /* People+CoreDataProperties.swift in Sources */,

@@ -13,9 +13,9 @@ import SwiftyJSON
 @objc(Species)
 public class Species: NSManagedObject {
 
-    static func make(from json: JSON, in context: NSManagedObjectContext) -> Species? {
+    static func makeOrUpdate(from json: JSON, in context: NSManagedObjectContext) -> Species? {
         guard let objectId = json["url"].url?.lastPathComponent.asInt16 else { return nil }
-        let object = Species(entity: entity(), insertInto: context)
+        let object = getUniqueInstance(from: objectId, in: context)
         
         object.created = Date.fromISO8601(json["created"].stringValue) as Date?
         object.edited = Date.fromISO8601(json["edited"].stringValue) as Date?
@@ -35,7 +35,7 @@ public class Species: NSManagedObject {
         object.heirColors = json["hair_colors"].string?.components(separatedBy: ", ")
         object.skinColors = json["skin_colors"].string?.components(separatedBy: ", ")
         
-        debugPrint("Object created: \(type(of: self)) \(objectId)")
+        debugPrint("Object overwritten: \(type(of: self)) \(objectId)")
         
         return object
     }
