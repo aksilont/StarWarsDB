@@ -35,9 +35,44 @@ public class People: NSManagedObject {
         object.starshipIds = json["starships"].array?.compactMap { $0.url?.lastPathComponent.asInt }
         object.vehicleIds = json["vehicles"].array?.compactMap { $0.url?.lastPathComponent.asInt }
         
+        object.updateRelationships()
+        
         debugPrint("Object overwritten: \(type(of: self)) \(objectId)")
         
         return object
+    }
+    
+    func updateRelationships() {
+        updateSpeciesRelationship()
+    }
+    
+    private func updateSpeciesRelationship() {
+        typealias Entity = Species
+        
+        let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+        
+        do {
+            let results = try request.execute()
+            if !results.isEmpty {
+                results
+                    .filter { item in
+                        let shouldBinded = item.peopleIds?.contains(id.toInt) == true
+                        let notBinded = (item.peoples as? Set<Self>)?.first { $0.id == id } == nil
+                        return shouldBinded && notBinded
+                    }
+                    .forEach { item in
+                        item.addToPeoples(self)
+                        let msg =
+                            "Make relationship " +
+                            "\(type(of: self)) (\(name ?? ""))" +
+                            " <=> " +
+                            "\(type(of: item)) (\(item.name ?? ""))"
+                        debugPrint(msg)
+                    }
+            }
+        } catch {
+            debugPrint("Could not make relationship \(type(of: self)) <=> \(Entity.self)")
+        }
     }
     
 }

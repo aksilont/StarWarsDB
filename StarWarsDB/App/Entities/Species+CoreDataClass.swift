@@ -37,7 +37,64 @@ public class Species: NSManagedObject {
         
         debugPrint("Object overwritten: \(type(of: self)) \(objectId)")
         
+        object.updateRelationships()
+        
         return object
+    }
+    
+    func updateRelationships() {
+        updateHomeworldRelationships()
+        updatePeopleRelationship()
+    }
+    
+    private func updateHomeworldRelationships() {
+        typealias Entity = Planet
+        
+        guard homeworld == nil else { return }
+        let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %i", homeworldId)
+        
+        do {
+            guard let homeworld = try request.execute().first else { return }
+            self.homeworld = homeworld
+            let msg =
+                "Make relationship " +
+                "\(type(of: self)) (\(name ?? ""))" +
+                " <=> " +
+                "\(Entity.self) (\(homeworld.name ?? ""))"
+            debugPrint(msg)
+        } catch {
+            debugPrint("Could not make relationship \(type(of: self)) <=> \(Entity.self)")
+        }
+    }
+    
+    private func updatePeopleRelationship() {
+        typealias Entity = People
+        
+        let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+        
+        do {
+            let results = try request.execute()
+            if !results.isEmpty {
+                results
+                    .filter { item in
+                        let shouldBinded = item.speciesIds?.contains(id.toInt) == true
+                        let notBinded = (item.species as? Set<Self>)?.first { $0.id == id } == nil
+                        return shouldBinded && notBinded
+                    }
+                    .forEach { item in
+                        item.addToSpecies(self)
+                        let msg =
+                            "Make relationship " +
+                            "\(type(of: self)) (\(name ?? ""))" +
+                            " <=> " +
+                            "\(type(of: item)) (\(item.name ?? ""))"
+                        debugPrint(msg)
+                    }
+            }
+        } catch {
+            debugPrint("Could not make relationship \(type(of: self)) <=> \(Entity.self)")
+        }
     }
     
 }
