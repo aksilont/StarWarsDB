@@ -46,6 +46,31 @@ public class People: NSManagedObject {
         updateVehicleRelationship()
         updateStarshipRelationship()
         updateSpeciesRelationship()
+        updatePlanetRelationship()
+    }
+    
+    private func updatePlanetRelationship() {
+        typealias Entity = Planet
+        
+        let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            NSPredicate(format: "id = %i", homeworldId),
+            NSPredicate(format: "SUBQUERY(residents, $x, $x.id = %i).@count = 0", id)
+        ])
+        
+        do {
+            guard let item = try request.execute().first else { return }
+            homeworld = item
+            item.addToResidents(self)
+            let msg =
+                "Make relationship " +
+                "\(type(of: self)) (\(name ?? ""))" +
+                " <=> " +
+                "\(type(of: item)) (\(item.name ?? ""))"
+            debugPrint(msg)
+        } catch {
+            debugPrint("Could not make relationship \(type(of: self)) <=> \(Entity.self)")
+        }
     }
     
     private func updateVehicleRelationship() {

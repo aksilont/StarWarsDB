@@ -33,9 +33,45 @@ public class Planet: NSManagedObject {
         object.terrain = json["terrain"].string
         object.residentIds = json["residents"].array?.compactMap { $0.url?.lastPathComponent.asInt }
         
+        object.updateRelationships()
+        
         debugPrint("Object overwritten: \(type(of: self)) \(objectId)")
         
         return object
+    }
+    
+    func updateRelationships() {
+        updatePeopleRelationship()
+    }
+    
+    private func updatePeopleRelationship() {
+        typealias Entity = People
+        
+        let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            NSPredicate(format: "id IN %@", residentIds ?? []),
+            NSPredicate(format: "NOT (self IN %@)", residents ?? []),
+            NSPredicate(format: "homeworldId = %i", id)
+        ])
+        
+        do {
+            let result = try request.execute()
+            if !result.isEmpty {
+                result
+                    .forEach { item in
+                        addToResidents(item)
+                        item.homeworld = self
+                        let msg =
+                            "Make relationship " +
+                            "\(type(of: self)) (\(name ?? ""))" +
+                            " <=> " +
+                            "\(type(of: item)) (\(item.name ?? ""))"
+                        debugPrint(msg)
+                    }
+            }
+        } catch {
+            debugPrint("Could not make relationship \(type(of: self)) <=> \(Entity.self)")
+        }
     }
     
 }
