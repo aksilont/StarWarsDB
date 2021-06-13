@@ -12,7 +12,7 @@ import SwiftyJSON
 
 @objc(People)
 public class People: NSManagedObject {
-
+    
     static func makeOrUpdate(from json: JSON, in context: NSManagedObjectContext) -> People? {
         guard let objectId = json["url"].url?.lastPathComponent.asInt16 else { return nil }
         let object = getUniqueInstance(from: objectId, in: context)
@@ -43,7 +43,39 @@ public class People: NSManagedObject {
     }
     
     func updateRelationships() {
+        updateStarshipRelationship()
         updateSpeciesRelationship()
+    }
+    
+    private func updateStarshipRelationship() {
+        typealias Entity = Starship
+        
+        let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            NSPredicate(format: "id IN %@", starshipIds ?? []),
+            NSPredicate(format: "NOT (self IN %@)", starships ?? []),
+            NSPredicate(format: "SUBQUERY(pilots, $x, $x.id = %i).@count = 0", id)
+        ])
+        
+        do {
+            let result = try request.execute()
+            if !result.isEmpty {
+                result
+                    .filter { $0.pilotIds?.contains(id.toInt) == true }
+                    .forEach { item in
+                        addToStarships(item)
+                        item.addToPilots(self)
+                        let msg =
+                            "Make relationship " +
+                            "\(type(of: self)) (\(name ?? ""))" +
+                            " <=> " +
+                            "\(type(of: item)) (\(item.name ?? ""))"
+                        debugPrint(msg)
+                    }
+            }
+        } catch {
+            debugPrint("Could not make relationship \(type(of: self)) <=> \(Entity.self)")
+        }
     }
     
     private func updateSpeciesRelationship() {

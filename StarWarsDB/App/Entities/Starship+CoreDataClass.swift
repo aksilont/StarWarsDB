@@ -37,9 +37,46 @@ public class Starship: AbstarctVehicle {
         object.mglt = json["MGLT"].string?.asInt16 ?? -1
         object.hyperdriveRating = Float(json["hyperdrive_rating"].string ?? "-1") ?? -1.0
 
+        object.updateRelationships()
+        
         debugPrint("Object overwritten: \(type(of: self)) \(objectId)")
         
         return object
+    }
+    
+    func updateRelationships() {
+        updatePeopleRelationship()
+    }
+    
+    private func updatePeopleRelationship() {
+        typealias Entity = People
+        
+        let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            NSPredicate(format: "id IN %@", pilotIds ?? []),
+            NSPredicate(format: "NOT (self IN %@)", pilots ?? []),
+            NSPredicate(format: "SUBQUERY(starships, $x, $x.id = %i).@count = 0", id)
+        ])
+        
+        do {
+            let result = try request.execute()
+            if !result.isEmpty {
+                result
+                    .filter { $0.starshipIds?.contains(id.toInt) == true }
+                    .forEach { item in
+                        addToPilots(item)
+                        item.addToStarships(self)
+                        let msg =
+                            "Make relationship " +
+                            "\(type(of: self)) (\(name ?? ""))" +
+                            " <=> " +
+                            "\(type(of: item)) (\(item.name ?? ""))"
+                        debugPrint(msg)
+                    }
+            }
+        } catch {
+            debugPrint("Could not make relationship \(type(of: self)) <=> \(Entity.self)")
+        }
     }
     
 }
