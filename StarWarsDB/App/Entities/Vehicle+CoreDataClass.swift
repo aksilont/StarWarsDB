@@ -35,9 +35,45 @@ public class Vehicle: AbstarctVehicle {
         object.pilotIds = json["pilots"].array?.compactMap { $0.url?.lastPathComponent.asInt }
         object.vehicleClass = json["vehicle_class"].string
         
+        object.updateRelationships()
         debugPrint("Object overwritten: \(type(of: self)) \(objectId)")
         
         return object
+    }
+    
+    func updateRelationships() {
+        updatePeopleRelationship()
+    }
+    
+    private func updatePeopleRelationship() {
+        typealias Entity = People
+        
+        let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            NSPredicate(format: "id IN %@", pilotIds ?? []),
+            NSPredicate(format: "NOT (self IN %@)", pilots ?? []),
+            NSPredicate(format: "SUBQUERY(vehicles, $x, $x.id = %i).@count = 0", id)
+        ])
+        
+        do {
+            let result = try request.execute()
+            if !result.isEmpty {
+                result
+                    .filter { $0.vehicleIds?.contains(id.toInt) == true }
+                    .forEach { item in
+                        addToPilots(item)
+                        item.addToVehicles(self)
+                        let msg =
+                            "Make relationship " +
+                            "\(type(of: self)) (\(name ?? ""))" +
+                            " <=> " +
+                            "\(type(of: item)) (\(item.name ?? ""))"
+                        debugPrint(msg)
+                    }
+            }
+        } catch {
+            debugPrint("Could not make relationship \(type(of: self)) <=> \(Entity.self)")
+        }
     }
     
 }

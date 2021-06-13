@@ -43,8 +43,40 @@ public class People: NSManagedObject {
     }
     
     func updateRelationships() {
+        updateVehicleRelationship()
         updateStarshipRelationship()
         updateSpeciesRelationship()
+    }
+    
+    private func updateVehicleRelationship() {
+        typealias Entity = Vehicle
+        
+        let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            NSPredicate(format: "id IN %@", vehicleIds ?? []),
+            NSPredicate(format: "NOT (self IN %@)", vehicles ?? []),
+            NSPredicate(format: "SUBQUERY(pilots, $x, $x.id = %i).@count = 0", id)
+        ])
+        
+        do {
+            let result = try request.execute()
+            if !result.isEmpty {
+                result
+                    .filter { $0.pilotIds?.contains(id.toInt) == true }
+                    .forEach { item in
+                        addToVehicles(item)
+                        item.addToPilots(self)
+                        let msg =
+                            "Make relationship " +
+                            "\(type(of: self)) (\(name ?? ""))" +
+                            " <=> " +
+                            "\(type(of: item)) (\(item.name ?? ""))"
+                        debugPrint(msg)
+                    }
+            }
+        } catch {
+            debugPrint("Could not make relationship \(type(of: self)) <=> \(Entity.self)")
+        }
     }
     
     private func updateStarshipRelationship() {
