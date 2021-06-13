@@ -9,7 +9,7 @@ import CoreData
 
 extension NSManagedObject {
     
-    static func getUniqueInstance(from id: Int16, in context: NSManagedObjectContext) -> Self {
+    static func getUniqueInstance(from id: Int16, in context: NSManagedObjectContext, new: inout Bool) -> Self {
         let fetchRequest = NSFetchRequest<Self>(entityName: String(describing: self))
         fetchRequest.predicate = NSPredicate(format: "id = %i", id)
         
@@ -19,7 +19,7 @@ extension NSManagedObject {
             debugPrint("Object created: \(type(of: self)) \(id)")
             return self.init(context: context)
         }
-        
+        new = false
         return existed
     }
     

@@ -15,7 +15,8 @@ public class Starship: AbstarctVehicle {
 
     static func makeOrUpdate(from json: JSON, in context: NSManagedObjectContext) -> Starship? {
         guard let objectId = json["url"].url?.lastPathComponent.asInt16 else { return nil }
-        let object = getUniqueInstance(from: objectId, in: context)
+        var itsNew = true
+        let object = getUniqueInstance(from: objectId, in: context, new: &itsNew)
         
         object.created = Date.fromISO8601(json["created"].stringValue) as Date?
         object.edited = Date.fromISO8601(json["edited"].stringValue) as Date?
@@ -39,7 +40,9 @@ public class Starship: AbstarctVehicle {
 
         object.updateRelationships()
         
-        debugPrint("Object overwritten: \(type(of: self)) \(objectId)")
+        if itsNew == false {
+            debugPrint("Object updated: \(type(of: self)) \(objectId)")
+        }
         
         return object
     }

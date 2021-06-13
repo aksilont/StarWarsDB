@@ -52,38 +52,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 data.forEach { _ = Species.makeOrUpdate(from: $0, in: context) }
             }
         }
-        
-/*
-        let context = CoreDataStack.shared.mainContext
-
-        let fetchRequest: NSFetchRequest<People> = People.fetchRequest()
-//        fetchRequest.predicate = NSPredicate(format: "name == %@", "R2-D2")
-//        fetchRequest.predicate = NSPredicate(format: "(name CONTAINS[cd] %@) && (height > %i)", "Skywalker", 170)
-//        fetchRequest.predicate = NSPredicate(format: "height > %i", 100)
-//
-//        fetchRequest.sortDescriptors = [
-//            NSSortDescriptor(keyPath: \People.height, ascending: false),
-//            NSSortDescriptor(key: #keyPath(People.name), ascending: true)
-//        ]
-//
-        context.perform {
-            do {
-                let results = try fetchRequest.execute()
-                if !results.isEmpty {
-                    results.forEach { item in
-//                        (item.species as? Set<Species>)?.forEach {
-//                            print(item.name ?? "", $0.name ?? "")
-//                        }
-                        (item.starships as? Set<Starship>)?.forEach {
-                            print(item.name ?? "", $0.name ?? "")
-                        }
-                    }
-                }
-            } catch let error as NSError {
-                print(error.userInfo)
-            }
-        }
- */
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

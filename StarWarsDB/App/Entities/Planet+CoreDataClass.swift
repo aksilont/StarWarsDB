@@ -15,7 +15,8 @@ public class Planet: NSManagedObject {
 
     static func makeOrUpdate(from json: JSON, in context: NSManagedObjectContext) -> Planet? {
         guard let objectId = json["url"].url?.lastPathComponent.asInt16 else { return nil }
-        let object = getUniqueInstance(from: objectId, in: context)
+        var itsNew = true
+        let object = getUniqueInstance(from: objectId, in: context, new: &itsNew)
         
         object.created = Date.fromISO8601(json["created"].stringValue) as Date?
         object.edited = Date.fromISO8601(json["edited"].stringValue) as Date?
@@ -35,13 +36,16 @@ public class Planet: NSManagedObject {
         
         object.updateRelationships()
         
-        debugPrint("Object overwritten: \(type(of: self)) \(objectId)")
+        if itsNew == false {
+            debugPrint("Object updated: \(type(of: self)) \(objectId)")
+        }
         
         return object
     }
     
     func updateRelationships() {
         updatePeopleRelationship()
+        updateSpeciesRelationship()
     }
     
     private func updatePeopleRelationship() {
@@ -60,6 +64,34 @@ public class Planet: NSManagedObject {
                 result
                     .forEach { item in
                         addToResidents(item)
+                        item.homeworld = self
+                        let msg =
+                            "Make relationship " +
+                            "\(type(of: self)) (\(name ?? ""))" +
+                            " <=> " +
+                            "\(type(of: item)) (\(item.name ?? ""))"
+                        debugPrint(msg)
+                    }
+            }
+        } catch {
+            debugPrint("Could not make relationship \(type(of: self)) <=> \(Entity.self)")
+        }
+    }
+    
+    private func updateSpeciesRelationship() {
+        typealias Entity = Species
+        
+        let request: NSFetchRequest<Entity> = Entity.fetchRequest()
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            NSPredicate(format: "homeworldId = %i", id)
+        ])
+        
+        do {
+            let results = try request.execute()
+            if !results.isEmpty {
+                results
+                    .filter { $0.homeworld == nil }
+                    .forEach { item in
                         item.homeworld = self
                         let msg =
                             "Make relationship " +
