@@ -17,41 +17,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = MainViewController()
+        window.rootViewController = UINavigationController(rootViewController: CategoriesController())
         window.makeKeyAndVisible()
         self.window = window
         
-        let context = CoreDataStack.shared.makePrivateContext()
-
-        SWAPI.shared.getAll(.people) { data in
-            self.perform(in: context) {
-                data.forEach { _ = People.makeOrUpdate(from: $0, in: context) }
-            }
-        }
-
-        SWAPI.shared.getAll(.planets) { data in
-            self.perform(in: context) {
-                data.forEach { _ = Planet.makeOrUpdate(from: $0, in: context) }
-            }
-        }
-
-        SWAPI.shared.getAll(.vehicles) { data in
-            self.perform(in: context) {
-                data.forEach { _ = Vehicle.makeOrUpdate(from: $0, in: context) }
-            }
-        }
-
-        SWAPI.shared.getAll(.starships) { data in
-            self.perform(in: context) {
-                data.forEach { _ = Starship.makeOrUpdate(from: $0, in: context) }
-            }
-        }
-
-        SWAPI.shared.getAll(.species) { data in
-            self.perform(in: context) {
-                data.forEach { _ = Species.makeOrUpdate(from: $0, in: context) }
-            }
-        }
+//        let context = CoreDataStack.shared.makePrivateContext()
+//
+//        SWAPI.shared.getAll(.people) { data in
+//            self.perform(in: context) {
+//                data.forEach { _ = People.makeOrUpdate(from: $0, in: context) }
+//            }
+//        }
+//
+//        SWAPI.shared.getAll(.planets) { data in
+//            self.perform(in: context) {
+//                data.forEach { _ = Planet.makeOrUpdate(from: $0, in: context) }
+//            }
+//        }
+//
+//        SWAPI.shared.getAll(.vehicles) { data in
+//            self.perform(in: context) {
+//                data.forEach { _ = Vehicle.makeOrUpdate(from: $0, in: context) }
+//            }
+//        }
+//
+//        SWAPI.shared.getAll(.starships) { data in
+//            self.perform(in: context) {
+//                data.forEach { _ = Starship.makeOrUpdate(from: $0, in: context) }
+//            }
+//        }
+//
+//        SWAPI.shared.getAll(.species) { data in
+//            self.perform(in: context) {
+//                data.forEach { _ = Species.makeOrUpdate(from: $0, in: context) }
+//            }
+//        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

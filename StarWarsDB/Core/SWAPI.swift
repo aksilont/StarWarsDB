@@ -125,7 +125,7 @@ class SWAPI {
 
 enum ModelType: String {
     case people = "people/"
-    case lilms = "films/"
+    case films = "films/"
     case planets = "planets/"
     case species = "species/"
     case starships = "starships/"
