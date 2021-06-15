@@ -27,8 +27,10 @@ class CategoriesController: UITableViewController {
     // MARK: - UI
     
     private func setupUI() {
+        title = "Categories"
         tableView.register(CategoryCell.self, forCellReuseIdentifier: "CategoryCell")
-        view.backgroundColor = .white
+        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,17 +40,14 @@ class CategoriesController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as? CategoryCell
         else { return UITableViewCell() }
-        var configuration = cell.defaultContentConfiguration()
-        configuration.image = data[indexPath.row].icon
-        configuration.text = data[indexPath.row].title
-        cell.contentConfiguration = configuration
+        cell.data = data[indexPath.row]
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch data[indexPath.row].category {
         case .people:
-            performSegue(withIdentifier: "showPeoples", sender: nil)
+            navigationController?.pushViewController(PeoplesController(), animated: true)
         case .films:
             break
         case .planets:
