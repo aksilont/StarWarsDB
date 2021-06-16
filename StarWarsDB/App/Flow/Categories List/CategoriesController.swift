@@ -33,6 +33,8 @@ class CategoriesController: UITableViewController {
         tableView.separatorStyle = .none
     }
     
+    // MARK: - UITableViewDataSource
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
@@ -44,9 +46,13 @@ class CategoriesController: UITableViewController {
         return cell
     }
 
+    // MARK: - UITableViewDelegate
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch data[indexPath.row].category {
         case .people:
+            navigationItem.backButtonDisplayMode = .minimal
+            navigationController?.navigationBar.prefersLargeTitles = true
             navigationController?.pushViewController(PeoplesController(), animated: true)
         case .films:
             break

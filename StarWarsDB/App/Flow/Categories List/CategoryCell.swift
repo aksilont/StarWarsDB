@@ -29,6 +29,8 @@ class CategoryCell: UITableViewCell {
         }
     }
     
+    // MARK: - Init
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -37,6 +39,8 @@ class CategoryCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - UI
     
     private func setupUI() {
         selectionStyle = .none
