@@ -40,14 +40,28 @@ class PeoplesController: UITableViewController, NSFetchedResultsControllerDelega
         super.viewDidLoad()
         title = "Peoples"
         
-        tableView.register(ObjectCell.self, forCellReuseIdentifier: "ObjectCell")
+        setupTableView()
+        setupSearchController()
         
-        CoreDataStack.shared.mainContext.perform { [weak self] in
-            try? self?.resultsController?.performFetch()
-            self?.tableView.reloadData()
+        CoreDataStack.shared.mainContext.perform { [unowned self] in
+            try? self.resultsController?.performFetch()
+            self.tableView.reloadData()
         }
         
         DataRepository.shared.fetchAll(for: .people)
+    }
+    
+    private func setupTableView() {
+        tableView.register(ObjectCell.self, forCellReuseIdentifier: "ObjectCell")
+    }
+    
+    private func setupSearchController() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search"
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     // MARK: - UITableViewDataSource
@@ -129,6 +143,26 @@ class PeoplesController: UITableViewController, NSFetchedResultsControllerDelega
             tableView.reloadRows(at: [indexPath], with: .fade)
         @unknown default:
             fatalError("Unknown type for didChange anObject: Any")
+        }
+    }
+    
+}
+
+// MARK: - UISearchResultsUpdating
+
+extension PeoplesController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchText = searchController.searchBar.text ?? ""
+        if searchText.isEmpty {
+            resultsController?.fetchRequest.predicate = nil
+        } else {
+            resultsController?.fetchRequest.predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+        }
+        
+        CoreDataStack.shared.mainContext.perform { [unowned self] in
+            try? self.resultsController?.performFetch()
+            self.tableView.reloadData()
         }
     }
     
