@@ -20,38 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = UINavigationController(rootViewController: CategoriesController())
         window.makeKeyAndVisible()
         self.window = window
-        
-//        let context = CoreDataStack.shared.makePrivateContext()
-//
-//        SWAPI.shared.getAll(.people) { data in
-//            self.perform(in: context) {
-//                data.forEach { _ = People.makeOrUpdate(from: $0, in: context) }
-//            }
-//        }
-//
-//        SWAPI.shared.getAll(.planets) { data in
-//            self.perform(in: context) {
-//                data.forEach { _ = Planet.makeOrUpdate(from: $0, in: context) }
-//            }
-//        }
-//
-//        SWAPI.shared.getAll(.vehicles) { data in
-//            self.perform(in: context) {
-//                data.forEach { _ = Vehicle.makeOrUpdate(from: $0, in: context) }
-//            }
-//        }
-//
-//        SWAPI.shared.getAll(.starships) { data in
-//            self.perform(in: context) {
-//                data.forEach { _ = Starship.makeOrUpdate(from: $0, in: context) }
-//            }
-//        }
-//
-//        SWAPI.shared.getAll(.species) { data in
-//            self.perform(in: context) {
-//                data.forEach { _ = Species.makeOrUpdate(from: $0, in: context) }
-//            }
-//        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -81,23 +49,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
         CoreDataStack.shared.saveToStore()
-    }
-
-    private func perform(in context: NSManagedObjectContext, closure: @escaping () -> Void) {
-        context.perform {
-            closure()
-            
-            do {
-                if context.hasChanges {
-                    try context.save()
-                    debugPrint("Context changes saved")
-                } else {
-                    debugPrint("Context has no changes")
-                }
-            } catch {
-                debugPrint(error.localizedDescription)
-            }
-        }
     }
     
 }

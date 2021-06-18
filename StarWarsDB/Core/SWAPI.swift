@@ -130,6 +130,10 @@ enum ModelType: String {
     case species = "species/"
     case starships = "starships/"
     case vehicles = "vehicles/"
+    
+    static func getAll() -> [ModelType] {
+        return [.people, .starships, .vehicles, .species, .planets, .films]
+    }
 }
 
 enum APIResult {

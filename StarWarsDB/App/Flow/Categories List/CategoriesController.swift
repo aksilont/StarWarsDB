@@ -31,6 +31,15 @@ class CategoriesController: UITableViewController {
         tableView.register(CategoryCell.self, forCellReuseIdentifier: "CategoryCell")
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh,
+                                                            target: self,
+                                                            action: #selector(fetchAll))
+    }
+    
+    @objc private func fetchAll() {
+        ModelType.getAll().forEach { modelType in
+            DataRepository.shared.fetchAll(for: modelType)
+        }
     }
     
     // MARK: - UITableViewDataSource

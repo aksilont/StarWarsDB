@@ -40,15 +40,22 @@ class PeoplesController: UITableViewController, NSFetchedResultsControllerDelega
         super.viewDidLoad()
         title = "Peoples"
         
-        setupTableView()
-        setupSearchController()
-        
+        setupUI()
+
         CoreDataStack.shared.mainContext.perform { [unowned self] in
             try? self.resultsController?.performFetch()
             self.tableView.reloadData()
         }
-        
-        DataRepository.shared.fetchAll(for: .people)
+    }
+    
+    // MARK: - UI
+    
+    private func setupUI() {
+        setupTableView()
+        setupSearchController()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh,
+                                                            target: self,
+                                                            action: #selector(fetchCurrent))
     }
     
     private func setupTableView() {
@@ -62,6 +69,10 @@ class PeoplesController: UITableViewController, NSFetchedResultsControllerDelega
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
         definesPresentationContext = true
+    }
+    
+    @objc private func fetchCurrent() {
+        DataRepository.shared.fetchAll(for: .people)
     }
     
     // MARK: - UITableViewDataSource
@@ -92,6 +103,17 @@ class PeoplesController: UITableViewController, NSFetchedResultsControllerDelega
         cell.id = resultsController?.object(at: indexPath).id
         cell.name = resultsController?.object(at: indexPath).name
         return cell
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? ObjectCell, let id = cell.id
+        else { return }
+        let descriptionController = PeopleDescriptionController()
+        descriptionController.title = cell.name
+        descriptionController.setObjectId(id)
+        navigationController?.pushViewController(descriptionController, animated: true)
     }
     
     // MARK: - NSFetchedResultsControllerDelegate
