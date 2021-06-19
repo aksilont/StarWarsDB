@@ -30,6 +30,8 @@
 		7A1A632E26694F8600199FDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A632C26694F8600199FDD /* LaunchScreen.storyboard */; };
 		7A930A23267BDCAE00B2E718 /* NSSet+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A930A22267BDCAE00B2E718 /* NSSet+Extensions.swift */; };
 		7AA1680D26794A0000E8E8AA /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA1680C26794A0000E8E8AA /* SectionView.swift */; };
+		7AA4AA97267CDBF80019167B /* SelectedCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4AA96267CDBF80019167B /* SelectedCategoryController.swift */; };
+		7AA4AA99267CE2F90019167B /* SelectedDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4AA98267CE2F90019167B /* SelectedDescriptionController.swift */; };
 		7AC822202671114A00160C3B /* NSManagedObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8221F2671114A00160C3B /* NSManagedObject+Extensions.swift */; };
 		7AF1A245266D5EE400F95A1B /* Planet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1A241266D5EE400F95A1B /* Planet+CoreDataClass.swift */; };
 		7AF1A246266D5EE400F95A1B /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1A242266D5EE400F95A1B /* Planet+CoreDataProperties.swift */; };
@@ -72,6 +74,8 @@
 		7A1A632F26694F8600199FDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A930A22267BDCAE00B2E718 /* NSSet+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSet+Extensions.swift"; sourceTree = "<group>"; };
 		7AA1680C26794A0000E8E8AA /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		7AA4AA96267CDBF80019167B /* SelectedCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCategoryController.swift; sourceTree = "<group>"; };
+		7AA4AA98267CE2F90019167B /* SelectedDescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDescriptionController.swift; sourceTree = "<group>"; };
 		7AC8221F2671114A00160C3B /* NSManagedObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Extensions.swift"; sourceTree = "<group>"; };
 		7AF1A241266D5EE400F95A1B /* Planet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planet+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7AF1A242266D5EE400F95A1B /* Planet+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planet+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 				7AA1680C26794A0000E8E8AA /* SectionView.swift */,
 				7AFD86B42677F9C600E9E3B0 /* ObjectCell.swift */,
 				7AFD86B52677F9C600E9E3B0 /* PeoplesController.swift */,
+				7AA4AA96267CDBF80019167B /* SelectedCategoryController.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				7AFD86BF2677FD2F00E9E3B0 /* KeyValueCell.swift */,
 				7AFD86C12677FE2200E9E3B0 /* SingleValueCell.swift */,
 				7AFD86B92677FBDE00E9E3B0 /* PeopleDescriptionController.swift */,
+				7AA4AA98267CE2F90019167B /* SelectedDescriptionController.swift */,
 			);
 			path = Descriptions;
 			sourceTree = "<group>";
@@ -347,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AA4AA99267CE2F90019167B /* SelectedDescriptionController.swift in Sources */,
 				7AF1A246266D5EE400F95A1B /* Planet+CoreDataProperties.swift in Sources */,
 				7AFD86B32677F8D100E9E3B0 /* CategoriesController.swift in Sources */,
 				7A19FEEC266AC277000554F2 /* IntExtensions.swift in Sources */,
@@ -361,6 +368,7 @@
 				7A19FEEE266AC277000554F2 /* DateFormatters.swift in Sources */,
 				7A19FED9266A5FBC000554F2 /* AbstarctVehicle+CoreDataProperties.swift in Sources */,
 				7AF1A248266D5EE400F95A1B /* Species+CoreDataProperties.swift in Sources */,
+				7AA4AA97267CDBF80019167B /* SelectedCategoryController.swift in Sources */,
 				7A19FEDC266A6080000554F2 /* Starship+CoreDataClass.swift in Sources */,
 				7A19FEDD266A6080000554F2 /* Starship+CoreDataProperties.swift in Sources */,
 				7AFD86C22677FE2200E9E3B0 /* SingleValueCell.swift in Sources */,

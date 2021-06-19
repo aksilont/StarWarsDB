@@ -28,9 +28,14 @@ class CategoriesController: UITableViewController {
     
     private func setupUI() {
         title = "Categories"
+        
         tableView.register(CategoryCell.self, forCellReuseIdentifier: "CategoryCell")
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        navigationItem.backButtonDisplayMode = .minimal
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh,
                                                             target: self,
                                                             action: #selector(fetchAll))
@@ -60,8 +65,6 @@ class CategoriesController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch data[indexPath.row].category {
         case .people:
-            navigationItem.backButtonDisplayMode = .minimal
-            navigationController?.navigationBar.prefersLargeTitles = true
             navigationController?.pushViewController(PeoplesController(), animated: true)
         case .films:
             break
@@ -70,7 +73,7 @@ class CategoriesController: UITableViewController {
         case .species:
             break
         case .starships:
-            break
+            navigationController?.pushViewController(SelectedCategoryController<Starship>(), animated: true)
         case .vehicles:
             break
         }

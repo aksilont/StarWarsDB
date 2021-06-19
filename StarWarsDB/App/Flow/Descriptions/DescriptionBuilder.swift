@@ -49,6 +49,33 @@ final class DescriptionBuilder {
         return elements
     }
     
+    func build(from starship: Starship) -> [DescriptionElement] {
+        var elements = [DescriptionElement]()
+        
+        elements.append(.group(name: "General"))
+        elements.append(.keyValue(name: "Class:", value: starship.starshipClass ?? "unknown"))
+        elements.append(.keyValue(name: "Model:", value: starship.model ?? "unknown"))
+        elements.append(.keyValue(name: "MGLT:", value: starship.mglt.toNonNegativeString))
+        elements.append(.keyValue(name: "max ATS:", value: starship.maxAtmospheringSpeed.toNonNegativeString))
+        elements.append(.keyValue(name: "Cost:", value: starship.costInCredits.toNonNegativeString))
+        elements.append(.keyValue(name: "Hyperdrive", value: starship.hyperdriveRating.toNonNegativeString))
+        elements.append(.keyValue(name: "Length:", value: starship.length.toNonNegativeString))
+        elements.append(.keyValue(name: "Crew:", value: starship.crew.toNonNegativeString))
+        elements.append(.keyValue(name: "Passengers:", value: starship.passengers.toNonNegativeString))
+        elements.append(.keyValue(name: "Cargo:", value: starship.cargoCapacity.toNonNegativeString))
+        elements.append(.keyValue(name: "Manufacturer:", value: starship.manufacturer ?? "unknown"))
+
+        if starship.pilots?.isNotEmpty == true {
+            elements.append(.group(name: "Pilots"))
+            
+            (starship.pilots as? Set<People>)?
+                .compactMap { $0.name }
+                .forEach { elements.append(.singleValue(value: $0)) }
+        }
+        
+        return elements
+    }
+    
 }
 
 enum DescriptionElement {

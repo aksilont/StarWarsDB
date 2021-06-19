@@ -19,7 +19,7 @@ class KeyValueCell: UITableViewCell {
     private lazy var valueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 1
+        label.numberOfLines = 0
         return label
     }()
     
@@ -52,7 +52,6 @@ class KeyValueCell: UITableViewCell {
     
     private func setupUI() {
         addSubview(stackView)
-        stackView.frame = frame
         let padding: CGFloat = 30.0
         NSLayoutConstraint.activate([
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
