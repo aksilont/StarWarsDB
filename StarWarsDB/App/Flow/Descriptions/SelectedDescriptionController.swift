@@ -7,14 +7,13 @@
 
 import UIKit
 
-class SelectedDescriptionController<T>: UITableViewController {
+class SelectedDescriptionController<T: ObjectResultable>: UITableViewController {
 
     private var elements = [DescriptionElement]()
     
-    func setObjectId(_ id: Int16) {
-        // TODO
-        DataRepository.shared.fetchStarship(with: id) { [weak self] item in
-            self?.elements = DescriptionBuilder().build(from: item)
+    func setObjectId(_ id: Int16, modelType: ModelType) {
+        DataRepository.shared.fetch(model: modelType, with: id) { [weak self] item in
+            self?.elements = DescriptionBuilder().build(for: modelType, from: item)
             
             DispatchQueue.main.async {
                 self?.tableView.reloadData()

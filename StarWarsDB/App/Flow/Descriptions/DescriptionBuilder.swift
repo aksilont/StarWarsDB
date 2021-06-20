@@ -9,6 +9,25 @@ import Foundation
 
 final class DescriptionBuilder {
     
+    func build<T>(for modelType: ModelType, from object: T) -> [DescriptionElement] {
+        switch modelType {
+        case .people:
+            guard let item = object as? People else { return [] }
+            return build(from: item)
+        case .films:
+            return []
+        case .planets:
+            return []
+        case .species:
+            return []
+        case .starships:
+            guard let item = object as? Starship else { return [] }
+            return build(from: item)
+        case .vehicles:
+            return []
+        }
+    }
+    
     func build(from people: People) -> [DescriptionElement] {
         var elements = [DescriptionElement]()
         

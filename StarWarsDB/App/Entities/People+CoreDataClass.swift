@@ -11,7 +11,9 @@ import CoreData
 import SwiftyJSON
 
 @objc(People)
-public final class People: NSManagedObject {
+public final class People: NSManagedObject, ObjectResultable {
+    
+    static var modelType: ModelType = .people
     
     static func makeOrUpdate(from json: JSON, in context: NSManagedObjectContext) -> People? {
         guard let objectId = json["url"].url?.lastPathComponent.asInt16 else { return nil }

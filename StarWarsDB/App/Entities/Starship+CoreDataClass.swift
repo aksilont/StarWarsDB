@@ -13,6 +13,8 @@ import SwiftyJSON
 @objc(Starship)
 public final class Starship: AbstarctVehicle, ObjectResultable {
 
+    static var modelType: ModelType = .starships
+    
     static func makeOrUpdate(from json: JSON, in context: NSManagedObjectContext) -> Starship? {
         guard let objectId = json["url"].url?.lastPathComponent.asInt16 else { return nil }
         var itsNew = true

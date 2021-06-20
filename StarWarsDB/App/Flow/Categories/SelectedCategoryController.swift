@@ -11,6 +11,7 @@ import CoreData
 protocol ObjectResultable {
     var id: Int16 { get set }
     var name: String? { get set }
+    static var modelType: ModelType { get set }
 }
 
 class SelectedCategoryController<T: NSManagedObject & ObjectResultable>: UITableViewController,
@@ -79,7 +80,7 @@ class SelectedCategoryController<T: NSManagedObject & ObjectResultable>: UITable
     }
     
     @objc private func fetchCurrent() {
-        DataRepository.shared.fetchAll(for: .species)
+        DataRepository.shared.fetchAll(for: T.modelType)
     }
     
     // MARK: - UITableViewDataSource
@@ -119,7 +120,7 @@ class SelectedCategoryController<T: NSManagedObject & ObjectResultable>: UITable
         else { return }
         let descriptionController = SelectedDescriptionController<T>()
         descriptionController.title = cell.name
-        descriptionController.setObjectId(id)
+        descriptionController.setObjectId(id, modelType: T.modelType)
         navigationController?.pushViewController(descriptionController, animated: true)
     }
     

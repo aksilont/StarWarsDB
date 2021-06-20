@@ -40,6 +40,23 @@ final class DataRepository {
         }
     }
     
+    func fetch(model type: ModelType, with id: Int16, completion: @escaping (NSManagedObject) -> Void) {
+        switch type {
+        case .people:
+            fetchPeople(with: id, completion: completion)
+        case .films:
+            break
+        case .planets:
+            break
+        case .species:
+            break
+        case .starships:
+            fetchStarship(with: id, completion: completion)
+        case .vehicles:
+            break
+        }
+    }
+    
     func fetchPeople(with id: Int16, completion: @escaping (People) -> Void) {
         let context = storage.makePrivateContext()
 

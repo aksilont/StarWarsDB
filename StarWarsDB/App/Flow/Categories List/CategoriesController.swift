@@ -65,7 +65,7 @@ class CategoriesController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch data[indexPath.row].category {
         case .people:
-            navigationController?.pushViewController(PeoplesController(), animated: true)
+            navigationController?.pushViewController(SelectedCategoryController<People>(), animated: true)
         case .films:
             break
         case .planets:
