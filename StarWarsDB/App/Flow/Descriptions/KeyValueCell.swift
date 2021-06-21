@@ -53,8 +53,10 @@ class KeyValueCell: UITableViewCell {
     private func setupUI() {
         addSubview(stackView)
         let padding: CGFloat = 30.0
+        let innerMargins: CGFloat = 10.0
         NSLayoutConstraint.activate([
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            stackView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, constant: -innerMargins),
             stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: padding),
             stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -padding)
         ])

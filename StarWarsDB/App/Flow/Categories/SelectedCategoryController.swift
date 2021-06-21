@@ -118,7 +118,7 @@ class SelectedCategoryController<T: NSManagedObject & ObjectResultable>: UITable
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? ObjectCell, let id = cell.id
         else { return }
-        let descriptionController = SelectedDescriptionController<T>()
+        let descriptionController = SelectedDescriptionController()
         descriptionController.title = cell.name
         descriptionController.setObjectId(id, modelType: T.modelType)
         navigationController?.pushViewController(descriptionController, animated: true)

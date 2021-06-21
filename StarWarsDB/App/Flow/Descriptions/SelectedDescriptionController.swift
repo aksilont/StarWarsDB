@@ -7,8 +7,8 @@
 
 import UIKit
 
-class SelectedDescriptionController<T: ObjectResultable>: UITableViewController {
-
+class SelectedDescriptionController: UITableViewController {
+    
     private var elements = [DescriptionElement]()
     
     func setObjectId(_ id: Int16, modelType: ModelType) {
@@ -32,6 +32,7 @@ class SelectedDescriptionController<T: ObjectResultable>: UITableViewController 
         tableView.register(GroupCell.self, forCellReuseIdentifier: "GroupCell")
         tableView.register(KeyValueCell.self, forCellReuseIdentifier: "KeyValueCell")
         tableView.register(SingleValueCell.self, forCellReuseIdentifier: "SingleValueCell")
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     // MARK: - UITableViewDataSource
@@ -61,11 +62,6 @@ class SelectedDescriptionController<T: ObjectResultable>: UITableViewController 
         }
         
         return cell
-    }
-    
-    // TODO
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
     }
 
 }
