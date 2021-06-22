@@ -11,8 +11,10 @@ import CoreData
 import SwiftyJSON
 
 @objc(Vehicle)
-public final class Vehicle: AbstarctVehicle {
+public final class Vehicle: AbstarctVehicle, ObjectResultable {
 
+    static var modelType: ModelType = .vehicles
+    
     static func makeOrUpdate(from json: JSON, in context: NSManagedObjectContext) -> Vehicle? {
         guard let objectId = json["url"].url?.lastPathComponent.asInt16 else { return nil }
         var itsNew = true

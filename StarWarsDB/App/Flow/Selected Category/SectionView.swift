@@ -16,6 +16,8 @@ final class SectionView: UIView {
         return label
     }()
     
+    // MARK: - Init
+    
     init(name: String) {
         super.init(frame: .zero)
         backgroundColor = .lightGray.withAlphaComponent(0.3)
@@ -26,6 +28,8 @@ final class SectionView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - UI
     
     override func layoutSubviews() {
         super.layoutSubviews()

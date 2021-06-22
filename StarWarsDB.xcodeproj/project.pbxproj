@@ -40,13 +40,14 @@
 		7AFD86B22677F8D100E9E3B0 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD86B02677F8D100E9E3B0 /* CategoryCell.swift */; };
 		7AFD86B32677F8D100E9E3B0 /* CategoriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD86B12677F8D100E9E3B0 /* CategoriesController.swift */; };
 		7AFD86B62677F9C600E9E3B0 /* ObjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD86B42677F9C600E9E3B0 /* ObjectCell.swift */; };
-		7AFD86B72677F9C600E9E3B0 /* PeoplesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD86B52677F9C600E9E3B0 /* PeoplesController.swift */; };
-		7AFD86BA2677FBDE00E9E3B0 /* PeopleDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD86B92677FBDE00E9E3B0 /* PeopleDescriptionController.swift */; };
 		7AFD86BC2677FC2700E9E3B0 /* DescriptionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD86BB2677FC2700E9E3B0 /* DescriptionBuilder.swift */; };
 		7AFD86BE2677FCA300E9E3B0 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD86BD2677FCA300E9E3B0 /* GroupCell.swift */; };
 		7AFD86C02677FD2F00E9E3B0 /* KeyValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD86BF2677FD2F00E9E3B0 /* KeyValueCell.swift */; };
 		7AFD86C22677FE2200E9E3B0 /* SingleValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD86C12677FE2200E9E3B0 /* SingleValueCell.swift */; };
 		7AFD86C42677FF0D00E9E3B0 /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD86C32677FF0D00E9E3B0 /* DataRepository.swift */; };
+		7AFE1A382681E436009E2BFA /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE1A372681E436009E2BFA /* BaseCoordinator.swift */; };
+		7AFE1A3A2681E66E009E2BFA /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE1A392681E66E009E2BFA /* ApplicationCoordinator.swift */; };
+		7AFE1A3C2681EBB9009E2BFA /* CategoriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE1A3B2681EBB9009E2BFA /* CategoriesCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,13 +85,14 @@
 		7AFD86B02677F8D100E9E3B0 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		7AFD86B12677F8D100E9E3B0 /* CategoriesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesController.swift; sourceTree = "<group>"; };
 		7AFD86B42677F9C600E9E3B0 /* ObjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCell.swift; sourceTree = "<group>"; };
-		7AFD86B52677F9C600E9E3B0 /* PeoplesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeoplesController.swift; sourceTree = "<group>"; };
-		7AFD86B92677FBDE00E9E3B0 /* PeopleDescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleDescriptionController.swift; sourceTree = "<group>"; };
 		7AFD86BB2677FC2700E9E3B0 /* DescriptionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionBuilder.swift; sourceTree = "<group>"; };
 		7AFD86BD2677FCA300E9E3B0 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		7AFD86BF2677FD2F00E9E3B0 /* KeyValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueCell.swift; sourceTree = "<group>"; };
 		7AFD86C12677FE2200E9E3B0 /* SingleValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleValueCell.swift; sourceTree = "<group>"; };
 		7AFD86C32677FF0D00E9E3B0 /* DataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
+		7AFE1A372681E436009E2BFA /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		7AFE1A392681E66E009E2BFA /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		7AFE1A3B2681EBB9009E2BFA /* CategoriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,8 @@
 			children = (
 				7A1A631E26694F8500199FDD /* AppDelegate.swift */,
 				7A1A632026694F8500199FDD /* SceneDelegate.swift */,
+				7AFE1A372681E436009E2BFA /* BaseCoordinator.swift */,
+				7AFE1A392681E66E009E2BFA /* ApplicationCoordinator.swift */,
 				7A1A63392669504100199FDD /* Flow */,
 				7A1A633A2669504800199FDD /* Entities */,
 				7A1A633B266950A700199FDD /* Data Models */,
@@ -190,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				7AFD86A62677F7EF00E9E3B0 /* Categories List */,
-				7AFD86A72677F7F800E9E3B0 /* Categories */,
+				7AFD86A72677F7F800E9E3B0 /* Selected Category */,
 				7AFD86B82677FBA200E9E3B0 /* Descriptions */,
 			);
 			path = Flow;
@@ -226,21 +230,21 @@
 		7AFD86A62677F7EF00E9E3B0 /* Categories List */ = {
 			isa = PBXGroup;
 			children = (
+				7AFE1A3B2681EBB9009E2BFA /* CategoriesCoordinator.swift */,
 				7AFD86B02677F8D100E9E3B0 /* CategoryCell.swift */,
 				7AFD86B12677F8D100E9E3B0 /* CategoriesController.swift */,
 			);
 			path = "Categories List";
 			sourceTree = "<group>";
 		};
-		7AFD86A72677F7F800E9E3B0 /* Categories */ = {
+		7AFD86A72677F7F800E9E3B0 /* Selected Category */ = {
 			isa = PBXGroup;
 			children = (
 				7AA1680C26794A0000E8E8AA /* SectionView.swift */,
 				7AFD86B42677F9C600E9E3B0 /* ObjectCell.swift */,
-				7AFD86B52677F9C600E9E3B0 /* PeoplesController.swift */,
 				7AA4AA96267CDBF80019167B /* SelectedCategoryController.swift */,
 			);
-			path = Categories;
+			path = "Selected Category";
 			sourceTree = "<group>";
 		};
 		7AFD86B82677FBA200E9E3B0 /* Descriptions */ = {
@@ -250,7 +254,6 @@
 				7AFD86BD2677FCA300E9E3B0 /* GroupCell.swift */,
 				7AFD86BF2677FD2F00E9E3B0 /* KeyValueCell.swift */,
 				7AFD86C12677FE2200E9E3B0 /* SingleValueCell.swift */,
-				7AFD86B92677FBDE00E9E3B0 /* PeopleDescriptionController.swift */,
 				7AA4AA98267CE2F90019167B /* SelectedDescriptionController.swift */,
 			);
 			path = Descriptions;
@@ -353,7 +356,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AFE1A3C2681EBB9009E2BFA /* CategoriesCoordinator.swift in Sources */,
 				7AA4AA99267CE2F90019167B /* SelectedDescriptionController.swift in Sources */,
+				7AFE1A3A2681E66E009E2BFA /* ApplicationCoordinator.swift in Sources */,
 				7AF1A246266D5EE400F95A1B /* Planet+CoreDataProperties.swift in Sources */,
 				7AFD86B32677F8D100E9E3B0 /* CategoriesController.swift in Sources */,
 				7A19FEEC266AC277000554F2 /* IntExtensions.swift in Sources */,
@@ -368,12 +373,12 @@
 				7A19FEEE266AC277000554F2 /* DateFormatters.swift in Sources */,
 				7A19FED9266A5FBC000554F2 /* AbstarctVehicle+CoreDataProperties.swift in Sources */,
 				7AF1A248266D5EE400F95A1B /* Species+CoreDataProperties.swift in Sources */,
+				7AFE1A382681E436009E2BFA /* BaseCoordinator.swift in Sources */,
 				7AA4AA97267CDBF80019167B /* SelectedCategoryController.swift in Sources */,
 				7A19FEDC266A6080000554F2 /* Starship+CoreDataClass.swift in Sources */,
 				7A19FEDD266A6080000554F2 /* Starship+CoreDataProperties.swift in Sources */,
 				7AFD86C22677FE2200E9E3B0 /* SingleValueCell.swift in Sources */,
 				7AFD86BE2677FCA300E9E3B0 /* GroupCell.swift in Sources */,
-				7AFD86BA2677FBDE00E9E3B0 /* PeopleDescriptionController.swift in Sources */,
 				7A19FED5266A5FBC000554F2 /* Vehicle+CoreDataProperties.swift in Sources */,
 				7A19FEE0266A60C9000554F2 /* People+CoreDataClass.swift in Sources */,
 				7AFD86C02677FD2F00E9E3B0 /* KeyValueCell.swift in Sources */,
@@ -385,7 +390,6 @@
 				7A19FEF2266AC2B2000554F2 /* CoreDataStack.swift in Sources */,
 				7A19FEE1266A60C9000554F2 /* People+CoreDataProperties.swift in Sources */,
 				7AA1680D26794A0000E8E8AA /* SectionView.swift in Sources */,
-				7AFD86B72677F9C600E9E3B0 /* PeoplesController.swift in Sources */,
 				7A19FEEA266AC277000554F2 /* StringExtensions.swift in Sources */,
 				7A19FEEF266AC277000554F2 /* Errors.swift in Sources */,
 				7A1A632126694F8500199FDD /* SceneDelegate.swift in Sources */,

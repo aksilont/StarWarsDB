@@ -1,26 +1,34 @@
 //
-//  PeoplesController.swift
+//  SelectedCategoryController.swift
 //  StarWarsDB
 //
-//  Created by Aksilont on 14.06.2021.
+//  Created by Aksilont on 18.06.2021.
 //
 
 import UIKit
 import CoreData
 
-class PeoplesController: UITableViewController, NSFetchedResultsControllerDelegate {
+protocol ObjectResultable {
+    var id: Int16 { get set }
+    var name: String? { get set }
+    static var modelType: ModelType { get set }
+}
 
-    private lazy var resultsController: NSFetchedResultsController<People>? = {
-        var resultController: NSFetchedResultsController<People>?
+class SelectedCategoryController<T: NSManagedObject & ObjectResultable>: UITableViewController,
+                                                               NSFetchedResultsControllerDelegate,
+                                                               UISearchResultsUpdating {
+    
+    private lazy var resultsController: NSFetchedResultsController<T>? = {
+        var resultController: NSFetchedResultsController<T>?
         
         CoreDataStack.shared.mainContext.performAndWait {
-            let fetchRequest: NSFetchRequest<People> = People.fetchRequest()
+            let fetchRequest: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: T.self))
             
             fetchRequest.sortDescriptors = [
                 NSSortDescriptor(key: "name.firstLetter", ascending: true)
             ]
             
-            let controller = NSFetchedResultsController(
+            let controller = NSFetchedResultsController<T>(
                 fetchRequest: fetchRequest,
                 managedObjectContext: CoreDataStack.shared.mainContext,
                 sectionNameKeyPath: "name.firstLetter",
@@ -38,7 +46,7 @@ class PeoplesController: UITableViewController, NSFetchedResultsControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Peoples"
+        title = String(describing: T.self)
         
         setupUI()
 
@@ -60,6 +68,7 @@ class PeoplesController: UITableViewController, NSFetchedResultsControllerDelega
     
     private func setupTableView() {
         tableView.register(ObjectCell.self, forCellReuseIdentifier: "ObjectCell")
+        tableView.tableFooterView = UIView()
     }
     
     private func setupSearchController() {
@@ -72,7 +81,7 @@ class PeoplesController: UITableViewController, NSFetchedResultsControllerDelega
     }
     
     @objc private func fetchCurrent() {
-        DataRepository.shared.fetchAll(for: .people)
+        DataRepository.shared.fetchAll(for: T.modelType)
     }
     
     // MARK: - UITableViewDataSource
@@ -110,9 +119,9 @@ class PeoplesController: UITableViewController, NSFetchedResultsControllerDelega
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? ObjectCell, let id = cell.id
         else { return }
-        let descriptionController = PeopleDescriptionController()
+        let descriptionController = SelectedDescriptionController()
         descriptionController.title = cell.name
-        descriptionController.setObjectId(id)
+        descriptionController.setObjectId(id, modelType: T.modelType)
         navigationController?.pushViewController(descriptionController, animated: true)
     }
     
@@ -168,11 +177,7 @@ class PeoplesController: UITableViewController, NSFetchedResultsControllerDelega
         }
     }
     
-}
-
-// MARK: - UISearchResultsUpdating
-
-extension PeoplesController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
@@ -187,5 +192,4 @@ extension PeoplesController: UISearchResultsUpdating {
             self.tableView.reloadData()
         }
     }
-    
 }

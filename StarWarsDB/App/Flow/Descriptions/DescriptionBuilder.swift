@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum DescriptionElement {
+    case group(name: String)
+    case keyValue(name: String, value: String)
+    case singleValue(value: String)
+}
+
 final class DescriptionBuilder {
     
     func build<T>(for modelType: ModelType, from object: T) -> [DescriptionElement] {
@@ -95,10 +101,4 @@ final class DescriptionBuilder {
         return elements
     }
     
-}
-
-enum DescriptionElement {
-    case group(name: String)
-    case keyValue(name: String, value: String)
-    case singleValue(value: String)
 }

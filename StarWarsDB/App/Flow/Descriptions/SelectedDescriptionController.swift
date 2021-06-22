@@ -33,6 +33,7 @@ class SelectedDescriptionController: UITableViewController {
         tableView.register(KeyValueCell.self, forCellReuseIdentifier: "KeyValueCell")
         tableView.register(SingleValueCell.self, forCellReuseIdentifier: "SingleValueCell")
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.tableFooterView = UIView()
     }
     
     // MARK: - UITableViewDataSource

@@ -7,15 +7,29 @@
 
 import UIKit
 
+struct CategoryData {
+    
+    let title: String
+    let icon: UIImage
+    let category: ModelType
+    
+    static func data() -> [CategoryData] {
+        return [
+            CategoryData(title: "Peoples", icon: #imageLiteral(resourceName: "icon_people"), category: .people),
+            CategoryData(title: "Species", icon: #imageLiteral(resourceName: "icon_specie"), category: .species),
+            CategoryData(title: "Planets", icon: #imageLiteral(resourceName: "icon-planet"), category: .planets),
+            CategoryData(title: "Starhips", icon: #imageLiteral(resourceName: "icon-starship"), category: .starships),
+            CategoryData(title: "Vehicles", icon: #imageLiteral(resourceName: "icon-vehicle"), category: .vehicles)
+        ]
+    }
+    
+}
+
 class CategoriesController: UITableViewController {
     
-    private let data = [
-        CategoryData(title: "Peoples", icon: #imageLiteral(resourceName: "icon_people"), category: .people),
-        CategoryData(title: "Species", icon: #imageLiteral(resourceName: "icon_specie"), category: .species),
-        CategoryData(title: "Planets", icon: #imageLiteral(resourceName: "icon-planet"), category: .planets),
-        CategoryData(title: "Starhips", icon: #imageLiteral(resourceName: "icon-starship"), category: .starships),
-        CategoryData(title: "Vehicles", icon: #imageLiteral(resourceName: "icon-vehicle"), category: .vehicles)
-    ]
+    private let data = CategoryData.data()
+    
+    var onCategory: ((ModelType) -> Void)?
     
     // MARK: - Lifecycle
     
@@ -63,26 +77,7 @@ class CategoriesController: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch data[indexPath.row].category {
-        case .people:
-            navigationController?.pushViewController(SelectedCategoryController<People>(), animated: true)
-        case .films:
-            break
-        case .planets:
-            break
-        case .species:
-            break
-        case .starships:
-            navigationController?.pushViewController(SelectedCategoryController<Starship>(), animated: true)
-        case .vehicles:
-            break
-        }
+        onCategory?(data[indexPath.row].category)
     }
     
-}
-
-struct CategoryData {
-    let title: String
-    let icon: UIImage
-    let category: ModelType
 }

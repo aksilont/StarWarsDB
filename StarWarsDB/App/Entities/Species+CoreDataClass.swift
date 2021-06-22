@@ -11,8 +11,10 @@ import CoreData
 import SwiftyJSON
 
 @objc(Species)
-public final class Species: NSManagedObject {
+public final class Species: NSManagedObject, ObjectResultable {
 
+    static var modelType: ModelType = .species
+    
     static func makeOrUpdate(from json: JSON, in context: NSManagedObjectContext) -> Species? {
         guard let objectId = json["url"].url?.lastPathComponent.asInt16 else { return nil }
         var itsNew = true
