@@ -2,7 +2,20 @@ import Foundation
 import CoreData
 import SwiftyJSON
 
+typealias ManagedCoreDataModel = NSManagedObject & CoreDataModel
+
+protocol CoreDataModel {
+    static func makeOrUpdate(from json: JSON, in context: NSManagedObjectContext) -> Self?
+}
+
+extension People: CoreDataModel {}
+extension Planet: CoreDataModel {}
+extension Species: CoreDataModel {}
+extension Starship: CoreDataModel {}
+extension Vehicle: CoreDataModel {}
+
 final class DataRepository {
+    
     private let storage: CoreDataStack
     private let api: SWAPI
     
@@ -17,6 +30,71 @@ final class DataRepository {
         self.storage = storage
         self.api = api
     }
+    
+    func getClass(for modelType: ModelType) -> ManagedCoreDataModel.Type? {
+        switch modelType {
+        case .people:
+            return People.self
+        case .films:
+            return nil
+        case .planets:
+            return Planet.self
+        case .species:
+            return Species.self
+        case .starships:
+            return Starship.self
+        case .vehicles:
+            return Vehicle.self
+        }
+    }
+    
+    private func perform(in context: NSManagedObjectContext,
+                         clousure: @escaping () -> Void,
+                         completion: (() -> Void)? = nil) {
+        context.perform {
+            defer { completion?() }
+            clousure()
+            
+            do {
+                if context.hasChanges {
+                    try context.save()
+                    self.storage.saveToStore()
+                    debugPrint("Context changes saved")
+                } else {
+                    debugPrint("Context has no changes")
+                }
+            } catch {
+                debugPrint(error)
+            }
+        }
+    }
+    
+    private func performAndWait(in context: NSManagedObjectContext,
+                                clousure: @escaping () -> Void,
+                                completion: (() -> Void)? = nil) {
+        context.performAndWait {
+            defer { completion?() }
+            clousure()
+            
+            do {
+                if context.hasChanges {
+                    try context.save()
+                    self.storage.saveToStore()
+                    debugPrint("Context changes saved")
+                } else {
+                    debugPrint("Context has no changes")
+                }
+            } catch {
+                debugPrint(error)
+            }
+        }
+    }
+    
+}
+
+// MARK: - Fetch data
+
+extension DataRepository {
     
     func fetchAll(for modelType: ModelType, forceReload: Bool = true, completion: (() -> Void)? = nil) {
         let context = storage.makePrivateContext()
@@ -47,13 +125,13 @@ final class DataRepository {
         case .films:
             break
         case .planets:
-            break
+            fetchPlanet(with: id, completion: completion)
         case .species:
-            break
+            fetchSpecies(with: id, completion: completion)
         case .starships:
             fetchStarship(with: id, completion: completion)
         case .vehicles:
-            break
+            fetchVehicle(with: id, completion: completion)
         }
     }
     
@@ -150,74 +228,106 @@ final class DataRepository {
         }
     }
     
-    func getClass(for modelType: ModelType) -> ManagedCoreDataModel.Type? {
-        switch modelType {
-        case .people:
-            return People.self
-        case .films:
-            return nil
-        case .planets:
-            return Planet.self
-        case .species:
-            return Species.self
-        case .starships:
-            return Starship.self
-        case .vehicles:
-            return Vehicle.self
-        }
-    }
-    
-    private func perform(in context: NSManagedObjectContext,
-                         clousure: @escaping () -> Void,
-                         completion: (() -> Void)? = nil) {
+    func fetchVehicle(with id: Int16, completion: @escaping (Vehicle) -> Void) {
+        let context = storage.makePrivateContext()
+        
         context.perform {
-            defer { completion?() }
-            clousure()
-            
             do {
-                if context.hasChanges {
-                    try context.save()
-                    self.storage.saveToStore()
-                    debugPrint("Context changes saved")
-                } else {
-                    debugPrint("Context has no changes")
+                let request: NSFetchRequest<Vehicle> = Vehicle.fetchRequest()
+                request.predicate = NSPredicate(format: "id = %u", id)
+                
+                var result = try request.execute().first
+                
+                if result == nil {
+                    let data = try self.api.get(.vehicles, withId: id.toInt)
+                    result = Vehicle.makeOrUpdate(from: data, in: context)
                 }
+                
+                if let ids = result?.pilotIds, result?.pilots?.count == 0 {
+                    try ids.forEach {
+                        _ = People.makeOrUpdate(
+                            from: try self.api.get(.people, withId: $0),
+                            in: context
+                        )
+                    }
+                }
+                
+                try context.save()
+                
+                guard let unwrapped = result else { return }
+                completion(unwrapped)
             } catch {
-                debugPrint(error)
+                debugPrint("Can't fetch starship with id \(id)")
             }
         }
     }
     
-    private func performAndWait(in context: NSManagedObjectContext,
-                                clousure: @escaping () -> Void,
-                                completion: (() -> Void)? = nil) {
-        context.performAndWait {
-            defer { completion?() }
-            clousure()
-            
+    func fetchPlanet(with id: Int16, completion: @escaping (Planet) -> Void) {
+        let context = storage.makePrivateContext()
+        
+        context.perform {
             do {
-                if context.hasChanges {
-                    try context.save()
-                    self.storage.saveToStore()
-                    debugPrint("Context changes saved")
-                } else {
-                    debugPrint("Context has no changes")
+                let request: NSFetchRequest<Planet> = Planet.fetchRequest()
+                request.predicate = NSPredicate(format: "id = %u", id)
+                
+                var result = try request.execute().first
+                
+                if result == nil {
+                    let data = try self.api.get(.planets, withId: id.toInt)
+                    result = Planet.makeOrUpdate(from: data, in: context)
                 }
+                
+                if let ids = result?.residentIds, result?.residents?.count == 0 {
+                    try ids.forEach {
+                        _ = People.makeOrUpdate(
+                            from: try self.api.get(.people, withId: $0),
+                            in: context
+                        )
+                    }
+                }
+                
+                try context.save()
+                
+                guard let unwrapped = result else { return }
+                completion(unwrapped)
             } catch {
-                debugPrint(error)
+                debugPrint("Can't fetch planet with id \(id)")
             }
         }
     }
+    
+    func fetchSpecies(with id: Int16, completion: @escaping (Species) -> Void) {
+        let context = storage.makePrivateContext()
+        
+        context.perform {
+            do {
+                let request: NSFetchRequest<Species> = Species.fetchRequest()
+                request.predicate = NSPredicate(format: "id = %u", id)
+                
+                var result = try request.execute().first
+                
+                if result == nil {
+                    let data = try self.api.get(.species, withId: id.toInt)
+                    result = Species.makeOrUpdate(from: data, in: context)
+                }
+                
+                if let ids = result?.peopleIds, result?.peoples?.count == 0 {
+                    try ids.forEach {
+                        _ = People.makeOrUpdate(
+                            from: try self.api.get(.people, withId: $0),
+                            in: context
+                        )
+                    }
+                }
+                
+                try context.save()
+                
+                guard let unwrapped = result else { return }
+                completion(unwrapped)
+            } catch {
+                debugPrint("Can't fetch species with id \(id)")
+            }
+        }
+    }
+    
 }
-
-typealias ManagedCoreDataModel = NSManagedObject & CoreDataModel
-
-protocol CoreDataModel {
-    static func makeOrUpdate(from json: JSON, in context: NSManagedObjectContext) -> Self?
-}
-
-extension People: CoreDataModel {}
-extension Planet: CoreDataModel {}
-extension Species: CoreDataModel {}
-extension Starship: CoreDataModel {}
-extension Vehicle: CoreDataModel {}

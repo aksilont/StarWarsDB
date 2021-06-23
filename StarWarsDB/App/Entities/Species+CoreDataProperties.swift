@@ -23,7 +23,7 @@ extension Species {
     @NSManaged public var edited: Date?
     @NSManaged public var eyeColors: [String]?
     @NSManaged public var filmIds: [Int]?
-    @NSManaged public var heirColors: [String]?
+    @NSManaged public var hairColors: [String]?
     @NSManaged public var homeworldId: Int16
     @NSManaged public var id: Int16
     @NSManaged public var language: String?
