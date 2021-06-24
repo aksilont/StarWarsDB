@@ -2,7 +2,7 @@
 //  AbstarctVehicle+CoreDataProperties.swift
 //  StarWarsDB
 //
-//  Created by Aksilont on 06.06.2021.
+//  Created by Aksilont on 24.06.2021.
 //
 //
 
@@ -17,7 +17,7 @@ extension AbstarctVehicle {
 
     @NSManaged public var cargoCapacity: Int64
     @NSManaged public var consumables: String?
-    @NSManaged public var costInCredits: Int64
+    @NSManaged public var cost: Int64
     @NSManaged public var created: Date?
     @NSManaged public var crew: Int64
     @NSManaged public var edited: Date?

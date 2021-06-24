@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AbstarctVehicle" representedClassName="AbstarctVehicle" isAbstract="YES" syncable="YES">
+        <attribute name="cargoCapacity" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="consumables" attributeType="String"/>
+        <attribute name="cost" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="crew" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="edited" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="filmIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="length" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="manufacturer" attributeType="String"/>
+        <attribute name="maxAtmospheringSpeed" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="model" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="passengers" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pilotIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+    </entity>
+    <entity name="People" representedClassName="People" syncable="YES">
+        <attribute name="birthYear" attributeType="String"/>
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="edited" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="eyeColor" attributeType="String"/>
+        <attribute name="filmIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="gender" attributeType="String"/>
+        <attribute name="hairColor" attributeType="String"/>
+        <attribute name="height" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="homeworldId" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="mass" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="skinColor" attributeType="String"/>
+        <attribute name="speciesIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="starshipIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="vehicleIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <relationship name="homeworld" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Planet" inverseName="residents" inverseEntity="Planet"/>
+        <relationship name="species" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Species" inverseName="peoples" inverseEntity="Species"/>
+        <relationship name="starships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Starship" inverseName="pilots" inverseEntity="Starship"/>
+        <relationship name="vehicles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="pilots" inverseEntity="Vehicle"/>
+    </entity>
+    <entity name="Planet" representedClassName="Planet" syncable="YES">
+        <attribute name="climate" attributeType="String"/>
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="diameter" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="edited" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="filmIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="gravity" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="orbitalPeriod" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="popultaion" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="residentIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="rotationPeriod" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="surfaceWater" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="terrain" attributeType="String"/>
+        <relationship name="residents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="People" inverseName="homeworld" inverseEntity="People"/>
+    </entity>
+    <entity name="Species" representedClassName="Species" syncable="YES">
+        <attribute name="averageHeight" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="averageLifespan" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="classification" attributeType="String"/>
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="designation" attributeType="String"/>
+        <attribute name="edited" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="eyeColors" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="filmIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="hairColors" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="homeworldId" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="language" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="peopleIds" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="skinColors" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <relationship name="homeworld" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Planet"/>
+        <relationship name="peoples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="People" inverseName="species" inverseEntity="People"/>
+    </entity>
+    <entity name="Starship" representedClassName="Starship" parentEntity="AbstarctVehicle" syncable="YES">
+        <attribute name="hyperdriveRating" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="mglt" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="starshipClass" attributeType="String"/>
+        <relationship name="pilots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="People" inverseName="starships" inverseEntity="People"/>
+    </entity>
+    <entity name="Vehicle" representedClassName="Vehicle" parentEntity="AbstarctVehicle" syncable="YES">
+        <attribute name="vehicleClass" attributeType="String"/>
+        <relationship name="pilots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="People" inverseName="vehicles" inverseEntity="People"/>
+    </entity>
+    <elements>
+        <element name="AbstarctVehicle" positionX="102.1798095703125" positionY="168.8202209472656" width="128" height="254"/>
+        <element name="People" positionX="-68.851806640625" positionY="163.4516906738281" width="126.4755859375" height="343"/>
+        <element name="Planet" positionX="-230.2108764648438" positionY="-76.38819885253906" width="128" height="268"/>
+        <element name="Species" positionX="-295.5528564453125" positionY="248.9886779785156" width="128" height="284"/>
+        <element name="Starship" positionX="101.1966552734375" positionY="34.9040222167969" width="128" height="103"/>
+        <element name="Vehicle" positionX="104.6315917968749" positionY="464.4473571777344" width="128" height="73"/>
+    </elements>
+</model>

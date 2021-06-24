@@ -28,7 +28,7 @@ public final class Starship: AbstarctVehicle, ObjectResultable {
         
         object.cargoCapacity = Int64(json["cargo_capacity"].string ?? "-1") ?? -1
         object.consumables = json["consumables"].string
-        object.costInCredits = Int64(json["cost_in_credits"].string ?? "-1") ?? -1
+        object.cost = Int64(json["cost_in_credits"].string ?? "-1") ?? -1
         object.crew = Int64(json["crew"].string ?? "-1") ?? -1
         object.length = Float(json["length"].string ?? "-1") ?? -1.0
         object.manufacturer = json["manufacturer"].string

@@ -88,12 +88,17 @@ final class CoreDataStack {
         DispatchQueue.global(qos: .background).async {
             let storeUrl = self.documentsUrl.appendingPathComponent(self.storeName)
             
+            let storeOptions = [
+                NSInferMappingModelAutomaticallyOption: true,
+                NSMigratePersistentStoresAutomaticallyOption: true
+            ]
+            
             do {
                 try self.coordinator.addPersistentStore(
                     ofType: NSSQLiteStoreType,
                     configurationName: nil,
                     at: storeUrl,
-                    options: nil
+                    options: storeOptions
                 )
                 self.storeIsReady.leave()
             } catch {

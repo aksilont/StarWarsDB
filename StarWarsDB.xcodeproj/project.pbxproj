@@ -73,6 +73,7 @@
 		7A1A632A26694F8600199FDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A1A632D26694F8600199FDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A1A632F26694F8600199FDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A8F20232684D59400214ABA /* StarWarsDB 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "StarWarsDB 2.xcdatamodel"; sourceTree = "<group>"; };
 		7A930A22267BDCAE00B2E718 /* NSSet+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSet+Extensions.swift"; sourceTree = "<group>"; };
 		7AA1680C26794A0000E8E8AA /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		7AA4AA96267CDBF80019167B /* SelectedCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCategoryController.swift; sourceTree = "<group>"; };
@@ -611,9 +612,10 @@
 		7A1A632726694F8500199FDD /* StarWarsDB.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				7A8F20232684D59400214ABA /* StarWarsDB 2.xcdatamodel */,
 				7A1A632826694F8500199FDD /* StarWarsDB.xcdatamodel */,
 			);
-			currentVersion = 7A1A632826694F8500199FDD /* StarWarsDB.xcdatamodel */;
+			currentVersion = 7A8F20232684D59400214ABA /* StarWarsDB 2.xcdatamodel */;
 			path = StarWarsDB.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
