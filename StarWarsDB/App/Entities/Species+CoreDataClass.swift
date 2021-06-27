@@ -34,7 +34,7 @@ public final class Species: NSManagedObject, ObjectResultable {
         object.homeworldId = json["homeworld"].url?.lastPathComponent.asInt16 ?? -1
         object.peopleIds = json["people"].array?.compactMap { $0.url?.lastPathComponent.asInt }
         
-        object.eyeColors = json["eye_colors"].string?.components(separatedBy: ", ")
+        object.eyeColors = json["eye_colors"].string
         object.hairColors = json["hair_colors"].string?.components(separatedBy: ", ")
         object.skinColors = json["skin_colors"].string?.components(separatedBy: ", ")
         

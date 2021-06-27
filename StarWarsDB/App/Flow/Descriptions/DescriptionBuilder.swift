@@ -163,7 +163,7 @@ final class DescriptionBuilder {
         elements.append(.keyValue(name: "Designation:", value: item.designation ?? "unknown"))
         elements.append(.keyValue(name: "Average height:", value: item.averageHeight.toNonNegativeString))
         elements.append(.keyValue(name: "Average lifespan:", value: item.averageLifespan.toNonNegativeString))
-        elements.append(.keyValue(name: "Eye colors", value: item.eyeColors?.joined(separator: ", ") ?? "unknown"))
+        elements.append(.keyValue(name: "Eye colors", value: item.eyeColors ?? "unknown"))
         elements.append(.keyValue(name: "Hair colors:", value: item.hairColors?.joined(separator: ", ") ?? "unknown"))
         elements.append(.keyValue(name: "Skin colors:", value: item.skinColors?.joined(separator: ", ") ?? "unknown"))
         elements.append(.keyValue(name: "Language:", value: item.language ?? "unknown"))

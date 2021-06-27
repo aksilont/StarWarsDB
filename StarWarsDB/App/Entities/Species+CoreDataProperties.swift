@@ -21,7 +21,7 @@ extension Species {
     @NSManaged public var created: Date?
     @NSManaged public var designation: String?
     @NSManaged public var edited: Date?
-    @NSManaged public var eyeColors: [String]?
+    @NSManaged public var eyeColors: String?
     @NSManaged public var filmIds: [Int]?
     @NSManaged public var hairColors: [String]?
     @NSManaged public var homeworldId: Int16
