@@ -28,6 +28,8 @@
 		7A1A632926694F8500199FDD /* StarWarsDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A632726694F8500199FDD /* StarWarsDB.xcdatamodeld */; };
 		7A1A632B26694F8600199FDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A632A26694F8600199FDD /* Assets.xcassets */; };
 		7A1A632E26694F8600199FDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A632C26694F8600199FDD /* LaunchScreen.storyboard */; };
+		7A39371D2689EDA200EEA224 /* ProgressiveMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A39371C2689EDA200EEA224 /* ProgressiveMigrator.swift */; };
+		7A39371F2689F93D00EEA224 /* Mapping_1to2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7A39371E2689F93D00EEA224 /* Mapping_1to2.xcmappingmodel */; };
 		7A3F58C32687AD5A00456E85 /* Mapping_2to3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F58C22687AD5A00456E85 /* Mapping_2to3.xcmappingmodel */; };
 		7A3F58C52687AF4600456E85 /* SpeciesMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F58C42687AF4600456E85 /* SpeciesMigrationPolicy.swift */; };
 		7A930A23267BDCAE00B2E718 /* NSSet+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A930A22267BDCAE00B2E718 /* NSSet+Extensions.swift */; };
@@ -75,6 +77,8 @@
 		7A1A632A26694F8600199FDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A1A632D26694F8600199FDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A1A632F26694F8600199FDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A39371C2689EDA200EEA224 /* ProgressiveMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressiveMigrator.swift; sourceTree = "<group>"; };
+		7A39371E2689F93D00EEA224 /* Mapping_1to2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Mapping_1to2.xcmappingmodel; sourceTree = "<group>"; };
 		7A3F58C12687AB2000456E85 /* StarWarsDB 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "StarWarsDB 3.xcdatamodel"; sourceTree = "<group>"; };
 		7A3F58C22687AD5A00456E85 /* Mapping_2to3.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Mapping_2to3.xcmappingmodel; sourceTree = "<group>"; };
 		7A3F58C42687AF4600456E85 /* SpeciesMigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesMigrationPolicy.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 		7A1A633826694FFC00199FDD /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				7A39371C2689EDA200EEA224 /* ProgressiveMigrator.swift */,
 				7A3F58C42687AF4600456E85 /* SpeciesMigrationPolicy.swift */,
 				7A19FEF1266AC2B2000554F2 /* CoreDataStack.swift */,
 				7AFD86C32677FF0D00E9E3B0 /* DataRepository.swift */,
@@ -229,6 +234,7 @@
 		7A1A633B266950A700199FDD /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
+				7A39371E2689F93D00EEA224 /* Mapping_1to2.xcmappingmodel */,
 				7A3F58C22687AD5A00456E85 /* Mapping_2to3.xcmappingmodel */,
 				7A1A632726694F8500199FDD /* StarWarsDB.xcdatamodeld */,
 			);
@@ -366,8 +372,10 @@
 			files = (
 				7AFE1A3C2681EBB9009E2BFA /* CategoriesCoordinator.swift in Sources */,
 				7AA4AA99267CE2F90019167B /* SelectedDescriptionController.swift in Sources */,
+				7A39371F2689F93D00EEA224 /* Mapping_1to2.xcmappingmodel in Sources */,
 				7AFE1A3A2681E66E009E2BFA /* ApplicationCoordinator.swift in Sources */,
 				7AF1A246266D5EE400F95A1B /* Planet+CoreDataProperties.swift in Sources */,
+				7A39371D2689EDA200EEA224 /* ProgressiveMigrator.swift in Sources */,
 				7AFD86B32677F8D100E9E3B0 /* CategoriesController.swift in Sources */,
 				7A19FEEC266AC277000554F2 /* IntExtensions.swift in Sources */,
 				7A930A23267BDCAE00B2E718 /* NSSet+Extensions.swift in Sources */,

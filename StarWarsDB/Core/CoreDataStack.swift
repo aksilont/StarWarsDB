@@ -51,6 +51,13 @@ final class CoreDataStack {
         return url
     }()
     
+    private lazy var migrator: ProgressiveMigrator = {
+       return ProgressiveMigrator(modelName: modelName,
+                                  model: objectModel,
+                                  storeUrl: documentsUrl.appendingPathComponent(self.storeName),
+                                  tempUrl: documentsUrl.appendingPathComponent("Temp.sqlite"))
+    }()
+    
     init(modelName: String = "StarWarsDB", storeName: String = "StarWarsDB.sqlite") {
         self.modelName = modelName
         self.storeName = storeName
@@ -88,17 +95,13 @@ final class CoreDataStack {
         DispatchQueue.global(qos: .background).async {
             let storeUrl = self.documentsUrl.appendingPathComponent(self.storeName)
             
-            let storeOptions = [
-                NSInferMappingModelAutomaticallyOption: true,
-                NSMigratePersistentStoresAutomaticallyOption: true
-            ]
-            
             do {
+                try self.migrator.migrateIfNeeded()
                 try self.coordinator.addPersistentStore(
                     ofType: NSSQLiteStoreType,
                     configurationName: nil,
                     at: storeUrl,
-                    options: storeOptions
+                    options: nil
                 )
                 self.storeIsReady.leave()
             } catch {
