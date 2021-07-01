@@ -9,14 +9,37 @@ import CoreData
 
 final class CoreDataStack {
     
-    private(set) static var shared: CoreDataStack = {
-        return CoreDataStack()
-    }()
-    
     private let storeIsReady = DispatchGroup()
     
     private let modelName: String
     private let storeName: String
+    let migrator: CoreDataMigratorProtocol
+    
+    // MARK: - Singleton
+    
+    static var shared: CoreDataStack = CoreDataStack()
+    
+    // MARK: - Core Data Stack
+    
+    private lazy var documentsUrl: URL = {
+        guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last
+        else { fatalError("Unable to resolve document directory") }
+        return url
+    }()
+    
+    private lazy var objectModel: NSManagedObjectModel = {
+        guard let objectModelUrl = Bundle.main.url(forResource: modelName, withExtension: "momd")
+        else { fatalError("Error loading model from bundle") }
+        
+        guard let model = NSManagedObjectModel(contentsOf: objectModelUrl)
+        else { fatalError("Error initializing momd from: \(modelName)") }
+        
+        return model
+    }()
+    
+    private lazy var coordinator: NSPersistentStoreCoordinator = {
+        NSPersistentStoreCoordinator(managedObjectModel: objectModel)
+    }()
     
     lazy var mainContext: NSManagedObjectContext = {
         storeIsReady.wait()
@@ -29,38 +52,14 @@ final class CoreDataStack {
         }
     }()
     
-    private lazy var coordinator: NSPersistentStoreCoordinator = {
-       NSPersistentStoreCoordinator(managedObjectModel: objectModel)
-    }()
+    // MARK: - Init
     
-    private lazy var objectModel: NSManagedObjectModel = {
-        guard let model = NSManagedObjectModel(contentsOf: objectModelUrl)
-        else { fatalError("Error initializing momd from: \(modelName)") }
-        return model
-    }()
-    
-    private lazy var objectModelUrl: URL = {
-        guard let url = Bundle.main.url(forResource: modelName, withExtension: "momd")
-        else { fatalError("Error loading model from bundle") }
-        return url
-    }()
-    
-    private lazy var documentsUrl: URL = {
-        guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last
-        else { fatalError("Unable to resolve document directory") }
-        return url
-    }()
-    
-    private lazy var migrator: ProgressiveMigrator = {
-       return ProgressiveMigrator(modelName: modelName,
-                                  model: objectModel,
-                                  storeUrl: documentsUrl.appendingPathComponent(self.storeName),
-                                  tempUrl: documentsUrl.appendingPathComponent("Temp.sqlite"))
-    }()
-    
-    init(modelName: String = "StarWarsDB", storeName: String = "StarWarsDB.sqlite") {
+    init(modelName: String = "StarWarsDB",
+         storeName: String = "StarWarsDB.sqlite",
+         migrator: CoreDataMigratorProtocol = CoreDataMigrator()) {
         self.modelName = modelName
         self.storeName = storeName
+        self.migrator = migrator
         registerStore()
     }
     
@@ -89,23 +88,32 @@ final class CoreDataStack {
         }
     }
     
+    private func migrateStoreIfNeeded(at storeURL: URL, completion: @escaping() -> Void) {
+        if migrator.requiresMigration(at: storeURL, toVersion: CoreDataMigrationVersion.current) {
+            migrator.migrateStore(at: storeURL, toVersion: CoreDataMigrationVersion.current)
+            completion()
+        } else {
+            completion()
+        }
+    }
+    
     private func registerStore() {
         storeIsReady.enter()
         
         DispatchQueue.global(qos: .background).async {
             let storeUrl = self.documentsUrl.appendingPathComponent(self.storeName)
-            
-            do {
-                try self.migrator.migrateIfNeeded()
-                try self.coordinator.addPersistentStore(
-                    ofType: NSSQLiteStoreType,
-                    configurationName: nil,
-                    at: storeUrl,
-                    options: nil
-                )
-                self.storeIsReady.leave()
-            } catch {
-                fatalError("Error create store: \(error)")
+            self.migrateStoreIfNeeded(at: storeUrl) {
+                do {
+                    try self.coordinator.addPersistentStore(
+                        ofType: NSSQLiteStoreType,
+                        configurationName: nil,
+                        at: storeUrl,
+                        options: nil
+                    )
+                    self.storeIsReady.leave()
+                } catch {
+                    fatalError("Error create store: \(error)")
+                }
             }
         }
     }

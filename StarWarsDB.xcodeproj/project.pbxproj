@@ -32,6 +32,12 @@
 		7A39371F2689F93D00EEA224 /* Mapping_1to2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7A39371E2689F93D00EEA224 /* Mapping_1to2.xcmappingmodel */; };
 		7A3F58C32687AD5A00456E85 /* Mapping_2to3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F58C22687AD5A00456E85 /* Mapping_2to3.xcmappingmodel */; };
 		7A3F58C52687AF4600456E85 /* SpeciesMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F58C42687AF4600456E85 /* SpeciesMigrationPolicy.swift */; };
+		7A7A0C01268D061F002B7534 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A0C00268D061F002B7534 /* CoreDataManager.swift */; };
+		7A84B66A268BA3F2006BDEFE /* CoreDataMigrationVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84B669268BA3F2006BDEFE /* CoreDataMigrationVersion.swift */; };
+		7A84B66C268BA61A006BDEFE /* CoreDataMigrationStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84B66B268BA61A006BDEFE /* CoreDataMigrationStep.swift */; };
+		7A84B66E268BA725006BDEFE /* NSManagedObjectModel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84B66D268BA725006BDEFE /* NSManagedObjectModel+Extension.swift */; };
+		7A84B670268BAC59006BDEFE /* CoreDataMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84B66F268BAC59006BDEFE /* CoreDataMigrator.swift */; };
+		7A84B672268BADB6006BDEFE /* NSPersistentStoreCoordinator+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84B671268BADB6006BDEFE /* NSPersistentStoreCoordinator+Extension.swift */; };
 		7A930A23267BDCAE00B2E718 /* NSSet+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A930A22267BDCAE00B2E718 /* NSSet+Extensions.swift */; };
 		7AA1680D26794A0000E8E8AA /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA1680C26794A0000E8E8AA /* SectionView.swift */; };
 		7AA4AA97267CDBF80019167B /* SelectedCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4AA96267CDBF80019167B /* SelectedCategoryController.swift */; };
@@ -82,6 +88,12 @@
 		7A3F58C12687AB2000456E85 /* StarWarsDB 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "StarWarsDB 3.xcdatamodel"; sourceTree = "<group>"; };
 		7A3F58C22687AD5A00456E85 /* Mapping_2to3.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Mapping_2to3.xcmappingmodel; sourceTree = "<group>"; };
 		7A3F58C42687AF4600456E85 /* SpeciesMigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesMigrationPolicy.swift; sourceTree = "<group>"; };
+		7A7A0C00268D061F002B7534 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		7A84B669268BA3F2006BDEFE /* CoreDataMigrationVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMigrationVersion.swift; sourceTree = "<group>"; };
+		7A84B66B268BA61A006BDEFE /* CoreDataMigrationStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMigrationStep.swift; sourceTree = "<group>"; };
+		7A84B66D268BA725006BDEFE /* NSManagedObjectModel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectModel+Extension.swift"; sourceTree = "<group>"; };
+		7A84B66F268BAC59006BDEFE /* CoreDataMigrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMigrator.swift; sourceTree = "<group>"; };
+		7A84B671268BADB6006BDEFE /* NSPersistentStoreCoordinator+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPersistentStoreCoordinator+Extension.swift"; sourceTree = "<group>"; };
 		7A8F20232684D59400214ABA /* StarWarsDB 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "StarWarsDB 2.xcdatamodel"; sourceTree = "<group>"; };
 		7A930A22267BDCAE00B2E718 /* NSSet+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSet+Extensions.swift"; sourceTree = "<group>"; };
 		7AA1680C26794A0000E8E8AA /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
@@ -121,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				7AC8221F2671114A00160C3B /* NSManagedObject+Extensions.swift */,
+				7A84B66D268BA725006BDEFE /* NSManagedObjectModel+Extension.swift */,
+				7A84B671268BADB6006BDEFE /* NSPersistentStoreCoordinator+Extension.swift */,
 				7A930A22267BDCAE00B2E718 /* NSSet+Extensions.swift */,
 				7A19FEE7266AC277000554F2 /* DateFormatters.swift */,
 				7A19FEE4266AC277000554F2 /* DispatchQueue+Extensions.swift */,
@@ -193,6 +207,7 @@
 		7A1A633826694FFC00199FDD /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				7A84B668268BA3DB006BDEFE /* Core Data */,
 				7A39371C2689EDA200EEA224 /* ProgressiveMigrator.swift */,
 				7A3F58C42687AF4600456E85 /* SpeciesMigrationPolicy.swift */,
 				7A19FEF1266AC2B2000554F2 /* CoreDataStack.swift */,
@@ -239,6 +254,17 @@
 				7A1A632726694F8500199FDD /* StarWarsDB.xcdatamodeld */,
 			);
 			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		7A84B668268BA3DB006BDEFE /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				7A84B669268BA3F2006BDEFE /* CoreDataMigrationVersion.swift */,
+				7A84B66B268BA61A006BDEFE /* CoreDataMigrationStep.swift */,
+				7A84B66F268BAC59006BDEFE /* CoreDataMigrator.swift */,
+				7A7A0C00268D061F002B7534 /* CoreDataManager.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 		7AFD86A62677F7EF00E9E3B0 /* Categories List */ = {
@@ -379,11 +405,14 @@
 				7AFD86B32677F8D100E9E3B0 /* CategoriesController.swift in Sources */,
 				7A19FEEC266AC277000554F2 /* IntExtensions.swift in Sources */,
 				7A930A23267BDCAE00B2E718 /* NSSet+Extensions.swift in Sources */,
+				7A84B672268BADB6006BDEFE /* NSPersistentStoreCoordinator+Extension.swift in Sources */,
 				7AF1A245266D5EE400F95A1B /* Planet+CoreDataClass.swift in Sources */,
 				7A1A632926694F8500199FDD /* StarWarsDB.xcdatamodeld in Sources */,
 				7AF1A247266D5EE400F95A1B /* Species+CoreDataClass.swift in Sources */,
+				7A7A0C01268D061F002B7534 /* CoreDataManager.swift in Sources */,
 				7AFD86B22677F8D100E9E3B0 /* CategoryCell.swift in Sources */,
 				7AFD86B62677F9C600E9E3B0 /* ObjectCell.swift in Sources */,
+				7A84B66E268BA725006BDEFE /* NSManagedObjectModel+Extension.swift in Sources */,
 				7A19FED4266A5FBC000554F2 /* Vehicle+CoreDataClass.swift in Sources */,
 				7A3F58C52687AF4600456E85 /* SpeciesMigrationPolicy.swift in Sources */,
 				7A19FED8266A5FBC000554F2 /* AbstarctVehicle+CoreDataClass.swift in Sources */,
@@ -394,8 +423,11 @@
 				7AA4AA97267CDBF80019167B /* SelectedCategoryController.swift in Sources */,
 				7A19FEDC266A6080000554F2 /* Starship+CoreDataClass.swift in Sources */,
 				7A19FEDD266A6080000554F2 /* Starship+CoreDataProperties.swift in Sources */,
+				7A84B670268BAC59006BDEFE /* CoreDataMigrator.swift in Sources */,
+				7A84B66A268BA3F2006BDEFE /* CoreDataMigrationVersion.swift in Sources */,
 				7AFD86C22677FE2200E9E3B0 /* SingleValueCell.swift in Sources */,
 				7AFD86BE2677FCA300E9E3B0 /* GroupCell.swift in Sources */,
+				7A84B66C268BA61A006BDEFE /* CoreDataMigrationStep.swift in Sources */,
 				7A19FED5266A5FBC000554F2 /* Vehicle+CoreDataProperties.swift in Sources */,
 				7A19FEE0266A60C9000554F2 /* People+CoreDataClass.swift in Sources */,
 				7AFD86C02677FD2F00E9E3B0 /* KeyValueCell.swift in Sources */,
