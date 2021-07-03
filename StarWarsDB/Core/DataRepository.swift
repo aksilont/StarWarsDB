@@ -16,17 +16,17 @@ extension Vehicle: CoreDataModel {}
 
 final class DataRepository {
     
-    private let storage: CoreDataStack
+    private let storage: CoreDataManager
     private let api: SWAPI
     
     static let shared: DataRepository = {
         return DataRepository(
-            storage: CoreDataStack.shared,
+            storage: CoreDataManager.shared,
             api: SWAPI.shared
         )
     }()
     
-    init(storage: CoreDataStack, api: SWAPI) {
+    init(storage: CoreDataManager, api: SWAPI) {
         self.storage = storage
         self.api = api
     }

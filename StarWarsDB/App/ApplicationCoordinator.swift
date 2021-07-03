@@ -10,7 +10,11 @@ import Foundation
 final class ApplicationCoordinator: BaseCoordinator {
     
     override func start() {
-        toCategoriesList()
+        CoreDataManager.shared.setup {
+            DispatchQueue.main.async {
+                self.toCategoriesList()
+            }
+        }
     }
     
     private func toCategoriesList() {

@@ -21,7 +21,7 @@ class SelectedCategoryController<T: NSManagedObject & ObjectResultable>: UITable
     private lazy var resultsController: NSFetchedResultsController<T>? = {
         var resultController: NSFetchedResultsController<T>?
         
-        CoreDataStack.shared.mainContext.performAndWait {
+        CoreDataManager.shared.mainContext.performAndWait {
             let fetchRequest: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: T.self))
             
             fetchRequest.sortDescriptors = [
@@ -30,7 +30,7 @@ class SelectedCategoryController<T: NSManagedObject & ObjectResultable>: UITable
             
             let controller = NSFetchedResultsController<T>(
                 fetchRequest: fetchRequest,
-                managedObjectContext: CoreDataStack.shared.mainContext,
+                managedObjectContext: CoreDataManager.shared.mainContext,
                 sectionNameKeyPath: "name.firstLetter",
                 cacheName: nil
             )
@@ -50,7 +50,7 @@ class SelectedCategoryController<T: NSManagedObject & ObjectResultable>: UITable
         
         setupUI()
 
-        CoreDataStack.shared.mainContext.perform { [unowned self] in
+        CoreDataManager.shared.mainContext.perform { [unowned self] in
             try? self.resultsController?.performFetch()
             self.tableView.reloadData()
         }
@@ -187,7 +187,7 @@ class SelectedCategoryController<T: NSManagedObject & ObjectResultable>: UITable
             resultsController?.fetchRequest.predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
         }
         
-        CoreDataStack.shared.mainContext.perform { [unowned self] in
+        CoreDataManager.shared.mainContext.perform { [unowned self] in
             try? self.resultsController?.performFetch()
             self.tableView.reloadData()
         }
