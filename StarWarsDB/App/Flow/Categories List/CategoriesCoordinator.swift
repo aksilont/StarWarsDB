@@ -12,7 +12,9 @@ final class CategoriesCoordinator: BaseCoordinator {
     var rootController: UINavigationController?
     
     override func start() {
-        showCategories()
+        CoreDataManager.shared.setup {
+            self.showCategories()
+        }
     }
     
     private func showCategories() {
