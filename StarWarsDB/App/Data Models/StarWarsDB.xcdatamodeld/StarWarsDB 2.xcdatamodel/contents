@@ -3,7 +3,7 @@
     <entity name="AbstarctVehicle" representedClassName="AbstarctVehicle" isAbstract="YES" syncable="YES">
         <attribute name="cargoCapacity" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="consumables" attributeType="String"/>
-        <attribute name="cost" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="cost" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" elementID="costInCredits"/>
         <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="crew" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="edited" attributeType="Date" usesScalarValueType="NO"/>
