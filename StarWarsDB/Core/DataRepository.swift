@@ -97,7 +97,7 @@ final class DataRepository {
 extension DataRepository {
     
     func fetchAll(for modelType: ModelType, forceReload: Bool = true, completion: (() -> Void)? = nil) {
-        let context = storage.makePrivateContext()
+        let context = storage.backgroundContext
         
         context.perform {
             let modelClass = self.getClass(for: modelType)
@@ -136,7 +136,7 @@ extension DataRepository {
     }
     
     func fetchPeople(with id: Int16, completion: @escaping (People) -> Void) {
-        let context = storage.makePrivateContext()
+        let context = storage.backgroundContext
 
         context.perform {
             do {
@@ -195,7 +195,7 @@ extension DataRepository {
     }
     
     func fetchStarship(with id: Int16, completion: @escaping (Starship) -> Void) {
-        let context = storage.makePrivateContext()
+        let context = storage.backgroundContext
         
         context.perform {
             do {
@@ -229,7 +229,7 @@ extension DataRepository {
     }
     
     func fetchVehicle(with id: Int16, completion: @escaping (Vehicle) -> Void) {
-        let context = storage.makePrivateContext()
+        let context = storage.backgroundContext
         
         context.perform {
             do {
@@ -263,7 +263,7 @@ extension DataRepository {
     }
     
     func fetchPlanet(with id: Int16, completion: @escaping (Planet) -> Void) {
-        let context = storage.makePrivateContext()
+        let context = storage.backgroundContext
         
         context.perform {
             do {
@@ -297,7 +297,7 @@ extension DataRepository {
     }
     
     func fetchSpecies(with id: Int16, completion: @escaping (Species) -> Void) {
-        let context = storage.makePrivateContext()
+        let context = storage.backgroundContext
         
         context.perform {
             do {

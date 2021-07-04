@@ -7,6 +7,8 @@
 
 import CoreData
 
+// Пример ручного создания CoreDataStack
+
 final class CoreDataStack {
     
     private let storeIsReady = DispatchGroup()

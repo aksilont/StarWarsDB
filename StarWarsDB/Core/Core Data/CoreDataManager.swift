@@ -41,10 +41,6 @@ final class CoreDataManager {
         return context
     }()
     
-    func makePrivateContext() -> NSManagedObjectContext {
-        return backgroundContext
-    }
-    
     // MARK: - Init
     
     init(storeType: String = NSSQLiteStoreType, migrator: CoreDataMigratorProtocol = CoreDataMigrator()) {
